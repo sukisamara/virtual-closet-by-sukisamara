@@ -13,45 +13,55 @@ const OCCASIONS = [
 ];
 
 const CATEGORIES = [
-  { id:'tops',        label:'Tops',        icon:'👚', sub:['blouse','t-shirt','tank top','corset','shirt','knit','bustier','crop top'] },
-  { id:'bottoms',     label:'Bottoms',     icon:'👖', sub:['trousers','jeans','shorts','leggings','cargo pants','wide leg'] },
-  { id:'skirts',      label:'Skirts',      icon:'🩷', sub:['mini skirt','midi skirt','maxi skirt','pleated','wrap skirt','denim skirt'] },
-  { id:'dresses',     label:'Dresses',     icon:'👗', sub:['mini dress','midi dress','maxi dress','slip dress','wrap dress','bodycon','co-ord'] },
-  { id:'outerwear',   label:'Outerwear',   icon:'🧥', sub:['blazer','coat','jacket','trench','puffer','cardigan','leather jacket'] },
-  { id:'shoes',       label:'Shoes',       icon:'👠', sub:['heels','flats','boots','sneakers','sandals','loafers','mules','mary janes'] },
-  { id:'bags',        label:'Bags',        icon:'👜', sub:['handbag','tote','clutch','crossbody','shoulder bag','mini bag','backpack'] },
-  { id:'accessories', label:'Accessories', icon:'✨', sub:['jewellery','belt','scarf','hat','sunglasses','hair accessories','gloves'] },
-  { id:'swimwear',    label:'Swimwear',    icon:'👙', sub:['bikini top','bikini bottom','swimsuit','coverup','sarong'] },
-  { id:'activewear',  label:'Activewear',  icon:'🏃', sub:['sports bra','leggings','set','tank','shorts'] },
+  { id:'tops',        label:'Tops',        sub:['blouse','button-down shirt','corset top','crop top','fitted tank','graphic tee','knit top','linen shirt','off-shoulder','polo shirt','strapless top','tube top'] },
+  { id:'bottoms',     label:'Bottoms',     sub:['barrel jeans','bootcut jeans','cargo pants','flare pants','high-waist jeans','linen trousers','loose trousers','mom jeans','relaxed shorts','skinny jeans','straight jeans','tailored trousers','wide leg trousers'] },
+  { id:'skirts',      label:'Skirts',      sub:['asymmetric skirt','denim mini','flippy skirt','floral midi','knit mini','maxi skirt','pencil skirt','pleated midi','pleated mini','satin midi','wrap skirt'] },
+  { id:'dresses',     label:'Dresses',     sub:['asymmetric dress','bodycon dress','co-ord set','linen dress','maxi dress','midi wrap dress','mini dress','shirt dress','slip dress','smock dress','strapless dress','sundress'] },
+  { id:'outerwear',   label:'Outerwear',   sub:['biker jacket','blazer','bouclé jacket','chunky cardigan','denim jacket','faux fur coat','leather jacket','long trench','oversized blazer','puffer jacket','shacket','varsity jacket','wool coat'] },
+  { id:'shoes',       label:'Shoes',       sub:['ankle boots','ballet flats','block heels','chunky sneakers','cowboy boots','dad sneakers','kitten heels','loafers','mary janes','mule heels','platform boots','pointed flats','sandal heels','slingbacks','sneakers','strappy sandals','thong sandals','ugg boots'] },
+  { id:'bags',        label:'Bags',        sub:['baguette bag','belt bag','bucket bag','canvas tote','chain shoulder bag','clutch','crossbody bag','doctor bag','hobo bag','mini bag','oversized tote','quilted bag','shoulder bag','structured handbag','woven bag'] },
+  { id:'accessories', label:'Accessories', sub:['baseball cap','belt','beret','bracelet stack','bucket hat','chain necklace','chunky rings','hair claw','hair scarf','hoop earrings','layered necklace','pearl earrings','pearl necklace','scrunchie','silk scarf','statement earrings','sunglasses','tights'] },
+  { id:'swimwear',    label:'Swimwear',    sub:['bikini set','boardshorts','cover-up dress','longline bikini top','one-piece swimsuit','sarong','string bikini','tie-side bottoms','triangle bikini top'] },
+  { id:'activewear',  label:'Activewear', sub:['biker shorts','cropped hoodie','cycling leggings','flare leggings','gym shorts','matching set','oversized gym tee','sports bra','tennis skirt','training jacket','yoga leggings'] },
 ];
-
-const CAT_ICONS = { tops:'👚',bottoms:'👖',skirts:'🩷',dresses:'👗',outerwear:'🧥',shoes:'👠',bags:'👜',accessories:'✨',swimwear:'👙',activewear:'🏃' };
 
 const PALETTE = ['#f9c6d8','#e8d5c4','#d4c8e8','#c8d8e8','#c8e8d4','#f0e6c8','#f4d4c0','#e8c8c8','#fce4d6','#e4d6fc'];
 
+// ─── SAMPLE IMAGES (Unsplash — free to use) ───
+const SAMPLE_IMAGES = {
+  tops:        'https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=400&q=80',
+  bottoms:     'https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=400&q=80',
+  skirts:      'https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?w=400&q=80',
+  dresses:     'https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=400&q=80',
+  outerwear:   'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=400&q=80',
+  shoes:       'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&q=80',
+  bags:        'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=400&q=80',
+  accessories: 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=400&q=80',
+};
+
 const SEED_ITEMS = [
-  { id:'s1', name:'Silk Slip Dress',       brand:'Reformation',    cost:220, category:'dresses',     subcategory:'slip dress',   aesthetics:['soft glam','clean girl'],      occasions:['date night','going out'],        color:'#f9c6d8', wears:7,  image:null, addedAt: Date.now()-86400000*10 },
-  { id:'s2', name:'Tailored Linen Blazer', brand:'Zara',           cost:95,  category:'outerwear',   subcategory:'blazer',       aesthetics:['quiet luxury','old money'],    occasions:['office wear','brunch'],          color:'#e8d5c4', wears:14, image:null, addedAt: Date.now()-86400000*20 },
-  { id:'s3', name:'Pleated Micro Skirt',   brand:'ASOS',           cost:42,  category:'skirts',      subcategory:'mini skirt',   aesthetics:['Y2K','ballet core'],           occasions:['going out','brunch'],            color:'#d4c8e8', wears:5,  image:null, addedAt: Date.now()-86400000*5  },
-  { id:'s4', name:'Pearl Drop Earrings',   brand:'Mejuri',         cost:78,  category:'accessories', subcategory:'jewellery',    aesthetics:['soft glam','quiet luxury'],    occasions:['office wear','date night'],      color:'#f0e6c8', wears:22, image:null, addedAt: Date.now()-86400000*30 },
-  { id:'s5', name:'Wide Leg Trousers',     brand:'COS',            cost:115, category:'bottoms',     subcategory:'wide leg',     aesthetics:['minimalist','old money'],      occasions:['office wear','business formal'], color:'#c8d8e8', wears:18, image:null, addedAt: Date.now()-86400000*15 },
-  { id:'s6', name:'Strappy Kitten Heels',  brand:'Steve Madden',   cost:88,  category:'shoes',       subcategory:'heels',        aesthetics:['ballet core','soft glam'],     occasions:['going out','date night'],        color:'#f4d4c0', wears:6,  image:null, addedAt: Date.now()-86400000*8  },
-  { id:'s7', name:'Ribbed Knit Top',       brand:'Mango',          cost:38,  category:'tops',        subcategory:'knit',         aesthetics:['clean girl','minimalist'],     occasions:['casual everyday','brunch'],      color:'#f0c4d4', wears:11, image:null, addedAt: Date.now()-86400000*12 },
-  { id:'s8', name:'Mini Leather Crossbody',brand:'Charles & Keith', cost:58,  category:'bags',       subcategory:'crossbody',    aesthetics:['quiet luxury','minimalist'],   occasions:['casual everyday','going out'],    color:'#e8c8b8', wears:30, image:null, addedAt: Date.now()-86400000*25 },
+  { id:'s1', name:'Silk Slip Dress',        brand:'Reformation',     cost:220, category:'dresses',     subcategory:'slip dress',         aesthetics:['soft glam','clean girl'],     occasions:['date night','going out'],         color:'#f9c6d8', wears:7,  image: SAMPLE_IMAGES.dresses,     addedAt: Date.now()-86400000*10, sample:true },
+  { id:'s2', name:'Tailored Linen Blazer',  brand:'Zara',            cost:95,  category:'outerwear',   subcategory:'blazer',             aesthetics:['quiet luxury','old money'],   occasions:['office wear','brunch'],           color:'#e8d5c4', wears:14, image: SAMPLE_IMAGES.outerwear,   addedAt: Date.now()-86400000*20, sample:true },
+  { id:'s3', name:'Pleated Midi Skirt',     brand:'ASOS',            cost:42,  category:'skirts',      subcategory:'pleated midi',       aesthetics:['Y2K','ballet core'],          occasions:['going out','brunch'],             color:'#d4c8e8', wears:5,  image: SAMPLE_IMAGES.skirts,      addedAt: Date.now()-86400000*5,  sample:true },
+  { id:'s4', name:'Statement Earrings',     brand:'Mejuri',          cost:78,  category:'accessories', subcategory:'statement earrings', aesthetics:['soft glam','quiet luxury'],   occasions:['office wear','date night'],       color:'#f0e6c8', wears:22, image: SAMPLE_IMAGES.accessories, addedAt: Date.now()-86400000*30, sample:true },
+  { id:'s5', name:'Wide Leg Trousers',      brand:'COS',             cost:115, category:'bottoms',     subcategory:'wide leg trousers',  aesthetics:['minimalist','old money'],     occasions:['office wear','business formal'],  color:'#c8d8e8', wears:18, image: SAMPLE_IMAGES.bottoms,     addedAt: Date.now()-86400000*15, sample:true },
+  { id:'s6', name:'Strappy Kitten Heels',   brand:'Steve Madden',    cost:88,  category:'shoes',       subcategory:'kitten heels',       aesthetics:['ballet core','soft glam'],    occasions:['going out','date night'],         color:'#f4d4c0', wears:6,  image: SAMPLE_IMAGES.shoes,       addedAt: Date.now()-86400000*8,  sample:true },
+  { id:'s7', name:'Ribbed Knit Top',        brand:'Mango',           cost:38,  category:'tops',        subcategory:'knit top',           aesthetics:['clean girl','minimalist'],    occasions:['casual everyday','brunch'],       color:'#f0c4d4', wears:11, image: SAMPLE_IMAGES.tops,        addedAt: Date.now()-86400000*12, sample:true },
+  { id:'s8', name:'Mini Leather Crossbody', brand:'Charles & Keith', cost:58,  category:'bags',        subcategory:'crossbody bag',      aesthetics:['quiet luxury','minimalist'],  occasions:['casual everyday','going out'],    color:'#e8c8b8', wears:30, image: SAMPLE_IMAGES.bags,        addedAt: Date.now()-86400000*25, sample:true },
 ];
 
 // ─── STORAGE ───
-function getItems()    { try { return JSON.parse(localStorage.getItem('sc-items')||'null') || SEED_ITEMS; } catch { return SEED_ITEMS; } }
+function getItems()       { try { return JSON.parse(localStorage.getItem('sc-items')||'null') || SEED_ITEMS; } catch { return SEED_ITEMS; } }
 function saveItems(items) { localStorage.setItem('sc-items', JSON.stringify(items)); }
-function getWearLog()  { try { return JSON.parse(localStorage.getItem('sc-wearlog')||'[]'); } catch { return []; } }
+function getWearLog()     { try { return JSON.parse(localStorage.getItem('sc-wearlog')||'[]'); } catch { return []; } }
 function saveWearLog(log) { localStorage.setItem('sc-wearlog', JSON.stringify(log)); }
-function getEvents()   { try { return JSON.parse(localStorage.getItem('sc-events')||'[]'); } catch { return []; } }
-function saveEvents(e) { localStorage.setItem('sc-events', JSON.stringify(e)); }
-function getGcal()     { return localStorage.getItem('sc-gcal') === 'true'; }
-function setGcal()     { localStorage.setItem('sc-gcal','true'); }
+function getEvents()      { try { return JSON.parse(localStorage.getItem('sc-events')||'[]'); } catch { return []; } }
+function saveEvents(e)    { localStorage.setItem('sc-events', JSON.stringify(e)); }
+function getGcal()        { return localStorage.getItem('sc-gcal') === 'true'; }
+function setGcal()        { localStorage.setItem('sc-gcal','true'); }
 
 // ─── CALCULATIONS ───
-function getCPW(item)  { if (!item.wears) return item.cost.toFixed(2); return (item.cost/item.wears).toFixed(2); }
+function getCPW(item) { if (!item.wears) return item.cost.toFixed(2); return (item.cost/item.wears).toFixed(2); }
 
 function getFavoriteItem(items, wearLog) {
   if (!items.length) return null;
@@ -78,18 +88,7 @@ function getAestheticStats(items, wearLog) {
   return Object.entries(counts).map(([name,value])=>({name,value})).sort((a,b)=>b.value-a.value);
 }
 
-// ─── NAVBAR ACTIVE STATE ───
-function setActiveNav() {
-  const path = window.location.pathname.split('/').pop() || 'index.html';
-  document.querySelectorAll('.nav-link').forEach(link => {
-    const href = link.getAttribute('href');
-    if (href === path || (path === '' && href === 'index.html') || (path === 'index.html' && href === 'index.html')) {
-      link.classList.add('active');
-    }
-  });
-}
-
-// ─── SCROLL NAVBAR ───
+// ─── NAVBAR SCROLL ───
 function initNavScroll() {
   const nav = document.querySelector('.navbar');
   if (!nav) return;
@@ -124,10 +123,10 @@ function connectGcal() {
   const today = new Date();
   const fmt = d => d.toISOString().split('T')[0];
   const demoEvents = [
-    { id:'gc1', title:'Team Standup',         date:fmt(today),                            type:'office wear',    source:'google' },
-    { id:'gc2', title:"Mia's Birthday Dinner",date:fmt(new Date(Date.now()+86400000)),    type:'going out',      source:'google' },
-    { id:'gc3', title:'Pilates Class',         date:fmt(new Date(Date.now()+172800000)),   type:'gym & active',   source:'google' },
-    { id:'gc4', title:'Client Presentation',  date:fmt(new Date(Date.now()+259200000)),   type:'business formal',source:'google' },
+    { id:'gc1', title:'Team Standup',          date:fmt(today),                           type:'office wear',    source:'google' },
+    { id:'gc2', title:"Mia's Birthday Dinner", date:fmt(new Date(Date.now()+86400000)),   type:'going out',      source:'google' },
+    { id:'gc3', title:'Pilates Class',          date:fmt(new Date(Date.now()+172800000)),  type:'gym & active',   source:'google' },
+    { id:'gc4', title:'Client Presentation',   date:fmt(new Date(Date.now()+259200000)),  type:'business formal',source:'google' },
   ];
   const events = getEvents().filter(e => e.source !== 'google');
   saveEvents([...events, ...demoEvents]);
@@ -164,46 +163,12 @@ function renderNavbar(activePage) {
   </nav>`;
 }
 
-// ─── RENDER FOOTER ───
+// ─── RENDER FOOTER (slim) ───
 function renderFooter() {
   return `
   <footer class="footer">
-    <div class="footer-inner">
-      <div class="footer-deco">✦ ✿ ✦ ✿ ✦ ✿ ✦ ✿ ✦</div>
-      <div class="footer-brand">SUKI SAMARA</div>
-      <p class="footer-tagline">Virtual Closet — dress like the main character</p>
-      <div class="footer-sub"><span>BRIGHT RETRO</span><span>·</span><span>AC REAL ADULT</span><span>·</span><span>EST. 2025</span></div>
-      <p class="footer-copy">© 2025 Suki Samara · All rights reserved · Made with ✦</p>
-    </div>
+    <p>Virtual Closet by Suki Samara &nbsp;·&nbsp; Est. 2026</p>
   </footer>`;
-}
-
-// ─── RENDER CLOTHING CARD ───
-function renderClothingCard(item, opts={}) {
-  const cpw = getCPW(item);
-  const icon = CAT_ICONS[item.category] || '✨';
-  const imgHtml = item.image
-    ? `<img src="${item.image}" alt="${item.name}" />`
-    : `<span class="card-emoji">${icon}</span>`;
-
-  return `
-  <div class="clothing-card${opts.selected?' selected':''}" data-id="${item.id}" onclick="${opts.onclick||''}">
-    <div class="card-img" style="background:linear-gradient(135deg,${item.color}44,${item.color}99)">
-      ${imgHtml}
-      <span class="card-cpw">£${cpw}/wear</span>
-    </div>
-    <div class="card-body">
-      <div class="card-top-row">
-        <h4 class="card-name">${item.name}</h4>
-        <span class="card-wears">${item.wears}×</span>
-      </div>
-      <p class="card-brand">${item.brand}</p>
-      <p class="card-cost">£${item.cost}</p>
-      <div class="card-tags">
-        ${item.aesthetics.slice(0,2).map(a=>`<span class="pill">${a}</span>`).join('')}
-      </div>
-    </div>
-  </div>`;
 }
 
 // ─── INIT ───

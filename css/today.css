@@ -1,69 +1,75 @@
 /* TODAY PAGE */
-.today-hero { display:grid; grid-template-columns:190px 1fr; gap:28px; margin-bottom:52px; align-items:start; }
-
-.date-block { background:var(--pink); border-radius:var(--r-lg); padding:28px 20px 22px; text-align:center; }
-.date-block .eyebrow { color:rgba(255,255,255,0.65); margin-bottom:6px; }
-.date-day-num { font-family:'Cormorant Garamond',serif; font-size:80px; line-height:1; color:#fff; font-weight:300; }
-.date-month { font-size:14px; color:rgba(255,255,255,0.8); margin-top:4px; }
-
-.context-cards { display:flex; flex-direction:column; gap:16px; }
-.context-card { background:var(--white); border:1.5px solid var(--border); border-radius:var(--r-lg); padding:20px 24px; }
-.event-row { display:flex; align-items:center; gap:12px; margin-top:10px; }
-.event-dot-big { width:10px;height:10px;background:var(--pink);border-radius:50%;flex-shrink:0; }
-.event-name { font-family:'Cormorant Garamond',serif; font-size:18px; color:var(--text-dark); margin-bottom:4px; }
-.no-event { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:16px; color:var(--text-muted); margin-top:8px; }
-.gcal-badge { font-family:'Courier New',monospace; font-size:8px; letter-spacing:0.14em; color:var(--pink); background:var(--pink-mist); padding:3px 8px; border-radius:var(--r-pill); border:1px solid var(--border); margin-left:auto; }
-.gcal-connected-badge { display:inline-flex; align-items:center; gap:6px; font-family:'Courier New',monospace; font-size:9px; letter-spacing:0.12em; color:var(--pink); padding:6px 14px; background:var(--pink-mist); border:1.5px solid var(--border); border-radius:var(--r-pill); margin-top:12px; }
-
-.weather-row { display:flex; align-items:center; gap:14px; margin-top:10px; flex-wrap:wrap; }
-.weather-icon { font-size:40px; line-height:1; }
-.weather-temp { font-family:'Cormorant Garamond',serif; font-size:30px; color:var(--text-dark); line-height:1; }
-.weather-desc { font-size:14px; color:var(--text); }
-.weather-meta { font-family:'Courier New',monospace; font-size:9px; color:var(--text-muted); letter-spacing:0.08em; }
-.weather-change { margin-left:auto; background:none; border:1.5px solid var(--border); border-radius:var(--r-pill); padding:5px 14px; font-size:12px; color:var(--text); cursor:pointer; font-family:'Karla',sans-serif; transition:all .2s; }
-.weather-change:hover { border-color:var(--pink); color:var(--text-dark); }
-.weather-picker { display:flex; flex-direction:column; gap:6px; margin-top:12px; }
-.weather-opt { display:flex; align-items:center; gap:8px; padding:8px 14px; border:1.5px solid var(--border); border-radius:var(--r-md); background:var(--yellow); font-size:13px; color:var(--text); cursor:pointer; font-family:'Karla',sans-serif; text-align:left; transition:all .18s; }
+.today-hero { display:grid; grid-template-columns:180px 1fr; gap:24px; margin-bottom:48px; align-items:start; }
+.date-block { background:var(--pink); border-radius:var(--r-lg); padding:24px 18px 20px; text-align:center; }
+.date-block .eyebrow { color:rgba(255,255,255,.65); margin-bottom:4px; }
+.date-day-num { font-family:'Cormorant Garamond',serif; font-size:72px; line-height:1; color:#fff; font-weight:300; }
+.date-month { font-size:14px; color:rgba(255,255,255,.8); margin-top:4px; }
+.context-cards { display:flex; flex-direction:column; gap:14px; }
+.context-card { background:var(--white); border:1.5px solid var(--border); border-radius:var(--r-lg); padding:18px 22px; }
+.event-row { display:flex; align-items:center; gap:10px; margin-top:8px; }
+.event-dot-big { width:9px; height:9px; background:var(--pink); border-radius:50%; flex-shrink:0; }
+.event-name { font-family:'Cormorant Garamond',serif; font-size:17px; color:var(--text-dark); margin-bottom:4px; }
+.no-event { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:15px; color:var(--text-muted); margin-top:6px; }
+.gcal-badge { font-family:'Courier New',monospace; font-size:8px; letter-spacing:.14em; color:var(--pink); background:var(--pink-mist); padding:3px 8px; border-radius:var(--r-pill); border:1px solid var(--border); margin-left:auto; }
+.gcal-connected-badge { display:inline-flex; align-items:center; gap:6px; font-family:'Courier New',monospace; font-size:9px; letter-spacing:.12em; color:var(--pink); padding:6px 12px; background:var(--pink-mist); border:1.5px solid var(--border); border-radius:var(--r-pill); margin-top:10px; }
+.weather-row { display:flex; align-items:center; gap:12px; margin-top:8px; flex-wrap:wrap; }
+.weather-icon { font-size:36px; line-height:1; }
+.weather-temp { font-family:'Cormorant Garamond',serif; font-size:28px; color:var(--text-dark); line-height:1; }
+.weather-desc { font-size:13px; color:var(--text); }
+.weather-change { margin-left:auto; background:none; border:1.5px solid var(--border); border-radius:var(--r-pill); padding:5px 12px; font-size:11px; color:var(--text); cursor:pointer; font-family:'Karla',sans-serif; transition:all .2s; }
+.weather-change:hover { border-color:var(--pink); }
+.weather-picker { display:flex; flex-direction:column; gap:5px; margin-top:10px; }
+.weather-opt { display:flex; align-items:center; gap:8px; padding:7px 12px; border:1.5px solid var(--border); border-radius:var(--r-md); background:var(--yellow); font-size:12px; color:var(--text); cursor:pointer; font-family:'Karla',sans-serif; text-align:left; transition:all .18s; }
 .weather-opt:hover,.weather-opt.active { border-color:var(--pink); background:var(--pink-mist); }
 
 /* Outfit section */
 .outfit-section { margin-bottom:60px; }
-.outfit-section-hdr { display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:28px; flex-wrap:wrap; gap:12px; }
+.outfit-section-hdr { display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:32px; flex-wrap:wrap; gap:12px; }
+.logged-inline { font-family:'Courier New',monospace; font-size:10px; letter-spacing:.16em; color:var(--pink-dark); padding:10px 16px; background:var(--pink-mist); border-radius:var(--r-pill); border:1.5px solid var(--border); }
 
-.outfit-builder { display:grid; grid-template-columns:1fr 300px; gap:28px; align-items:start; }
-.slots-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(185px,1fr)); gap:16px; }
+/* Body layout */
+.body-layout { display:grid; grid-template-columns:280px 1fr; gap:32px; align-items:start; }
 
-.outfit-slot { display:flex; flex-direction:column; gap:6px; }
-.slot-card { display:flex; align-items:center; background:var(--white); border:1.5px solid var(--border); border-radius:var(--r-lg); overflow:hidden; transition:border-color .2s; }
-.slot-card:hover { border-color:var(--pink); }
-.slot-arrow { flex-shrink:0; width:34px; min-height:155px; background:var(--yellow); border:none; font-size:20px; color:var(--pink); cursor:pointer; display:flex; align-items:center; justify-content:center; transition:all .18s; }
-.slot-arrow:hover { background:var(--pink-light); color:var(--pink-dark); }
-.slot-arrow:disabled { opacity:.2; cursor:default; }
-.slot-item-wrap { flex:1; display:flex; flex-direction:column; min-width:0; }
-.slot-img { height:120px; display:flex; align-items:center; justify-content:center; overflow:hidden; }
-.slot-img img { width:100%; height:100%; object-fit:contain; }
-.slot-emoji { font-size:40px; }
-.slot-info { padding:10px 12px; border-top:1px solid var(--border); }
-.slot-name { font-family:'Cormorant Garamond',serif; font-size:14px; color:var(--text-dark); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-.slot-brand { font-size:11px; color:var(--text-muted); }
-.slot-count { font-family:'Courier New',monospace; font-size:8px; color:var(--text-muted); letter-spacing:0.1em; text-align:center; }
+/* Mannequin */
+.body-figure { display:flex; gap:20px; align-items:flex-start; }
+.mannequin { position:relative; width:200px; flex-shrink:0; }
+.mannequin-svg { width:100%; display:block; }
 
-.summary-card { background:var(--white); border:1.5px solid var(--border); border-radius:var(--r-lg); padding:24px; position:sticky; top:82px; }
-.summary-rows { display:flex; flex-direction:column; gap:10px; margin-top:14px; }
-.summary-row { display:flex; align-items:center; gap:10px; }
-.summary-icon { font-size:20px; flex-shrink:0; }
-.summary-text { flex:1; min-width:0; }
-.summary-item-name { display:block; font-size:13px; color:var(--text-dark); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-.summary-item-brand { display:block; font-family:'Courier New',monospace; font-size:9px; color:var(--text-muted); letter-spacing:0.08em; }
-.summary-cost { font-size:13px; font-weight:600; color:var(--text-dark); white-space:nowrap; }
-.summary-divider { height:1px; background:var(--border); margin:16px 0; }
-.summary-total { display:flex; justify-content:space-between; align-items:center; font-size:14px; color:var(--text); margin-bottom:16px; }
-.summary-total-val { font-family:'Cormorant Garamond',serif; font-size:24px; color:var(--text-dark); font-weight:600; }
-.log-btn { width:100%; justify-content:center; padding:14px; font-size:14px; }
-.logged-msg { text-align:center; font-family:'Courier New',monospace; font-size:9px; letter-spacing:0.18em; color:var(--pink-dark); padding:14px; background:var(--pink-mist); border-radius:var(--r-md); animation:pulse 2s ease-in-out infinite; }
+/* Image layers over body */
+.body-layer { position:absolute; cursor:pointer; border-radius:10px; border:2px solid transparent; transition:border-color .2s, box-shadow .2s; overflow:hidden; }
+.body-layer:hover { border-color:var(--pink) !important; box-shadow:0 0 0 3px rgba(244,162,195,.25); }
+.body-layer img { width:100%; height:100%; object-fit:cover; display:block; }
+
+.body-top    { top:62px;  left:22px; width:156px; height:145px; }
+.body-dress  { top:62px;  left:22px; width:156px; height:245px; }
+.body-bottom { top:200px; left:22px; width:156px; height:155px; }
+.body-outer  { top:55px;  left:14px; width:172px; height:165px; opacity:.88; }
+.body-shoes  { top:350px; left:20px; width:160px; height:80px; }
+
+/* Accessory chips beside body */
+.body-accessories { display:flex; flex-direction:column; gap:12px; padding-top:20px; }
+.acc-chip { width:72px; display:flex; flex-direction:column; align-items:center; gap:5px; background:var(--white); border:1.5px solid var(--border); border-radius:var(--r-md); padding:8px; cursor:pointer; transition:all .2s; }
+.acc-chip:hover, .acc-chip.active { border-color:var(--pink); box-shadow:var(--shadow-sm); }
+.acc-chip img { width:52px; height:52px; object-fit:cover; border-radius:8px; }
+.acc-chip span:first-child { font-size:28px; }
+.acc-chip-label { font-family:'Courier New',monospace; font-size:8px; letter-spacing:.1em; color:var(--text-muted); text-transform:uppercase; }
+
+/* Slot detail panel */
+.slot-panel { display:flex; gap:20px; background:var(--white); border:1.5px solid var(--pink); border-radius:var(--r-lg); padding:20px; align-items:flex-start; }
+.slot-panel-img { width:110px; height:130px; border-radius:var(--r-md); flex-shrink:0; overflow:hidden; background:var(--yellow); display:flex; align-items:center; justify-content:center; }
+.slot-panel-img img { width:100%; height:100%; object-fit:cover; }
+.slot-panel-info { flex:1; display:flex; flex-direction:column; gap:8px; }
+.slot-panel-name { font-family:'Cormorant Garamond',serif; font-size:22px; color:var(--text-dark); }
+.slot-panel-brand { font-size:13px; color:var(--text-muted); }
+.slot-panel-tags { display:flex; flex-wrap:wrap; gap:5px; }
+.slot-panel-arrows { display:flex; align-items:center; gap:12px; margin-top:4px; }
+.arrow-btn { background:var(--yellow); border:1.5px solid var(--border); border-radius:var(--r-pill); padding:7px 16px; font-size:13px; font-weight:600; color:var(--text); cursor:pointer; font-family:'Karla',sans-serif; transition:all .18s; }
+.arrow-btn:hover { border-color:var(--pink); color:var(--text-dark); }
+.arrow-btn:disabled { opacity:.25; cursor:default; }
 
 @media(max-width:900px){
   .today-hero { grid-template-columns:1fr; }
-  .date-day-num { font-size:60px; }
-  .outfit-builder { grid-template-columns:1fr; }
+  .date-day-num { font-size:56px; }
+  .body-layout { grid-template-columns:1fr; }
+  .slot-panel { flex-direction:column; }
 }

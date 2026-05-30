@@ -1,7 +1,7 @@
 /* ANALYTICS PAGE */
 .analytics-hdr { margin-bottom:28px; }
 
-.kpi-strip { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:28px; }
+.kpi-strip { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:28px; }
 .kpi-card { background:var(--white); border:1.5px solid var(--border); border-radius:var(--r-lg); padding:22px 18px; text-align:center; display:flex; flex-direction:column; align-items:center; gap:5px; transition:all .22s; }
 .kpi-card:hover { border-color:var(--pink); box-shadow:var(--shadow-md); transform:translateY(-3px); }
 .kpi-icon { font-size:22px; color:var(--pink); }
@@ -21,6 +21,7 @@
 /* Pie + legend layout */
 .pie-layout { display:grid; grid-template-columns:1fr 1fr; gap:20px; align-items:center; margin-top:12px; }
 .pie-legend { display:flex; flex-direction:column; gap:8px; }
+.aes-legend.two-col { display:grid; grid-template-columns:1fr 1fr; gap:6px 16px; align-content:start; }
 .pie-leg-row { display:flex; align-items:center; gap:9px; }
 .pie-dot { width:11px; height:11px; border-radius:3px; flex-shrink:0; }
 .pie-leg-name { flex:1; font-size:13px; color:var(--text-dark); text-transform:capitalize; }
