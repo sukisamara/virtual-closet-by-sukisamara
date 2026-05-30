@@ -1,0 +1,64 @@
+/* ANALYTICS PAGE */
+.analytics-hdr { margin-bottom:28px; }
+
+.kpi-strip { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:28px; }
+.kpi-card { background:var(--white); border:1.5px solid var(--border); border-radius:var(--r-lg); padding:22px 18px; text-align:center; display:flex; flex-direction:column; align-items:center; gap:5px; transition:all .22s; }
+.kpi-card:hover { border-color:var(--pink); box-shadow:var(--shadow-md); transform:translateY(-3px); }
+.kpi-icon { font-size:22px; color:var(--pink); }
+.kpi-val { font-family:'Cormorant Garamond',serif; font-size:28px; color:var(--text-dark); line-height:1; }
+.kpi-lbl { font-family:'Courier New',monospace; font-size:8px; letter-spacing:0.14em; color:var(--pink); }
+
+.a-grid { display:grid; grid-template-columns:1fr 1fr; gap:22px; }
+.a-card { background:var(--white); border:1.5px solid var(--border); border-radius:var(--r-lg); padding:26px; }
+.a-card.full { grid-column:1/-1; }
+.a-card.wide { grid-column:1/2; }
+.a-title { font-family:'Cormorant Garamond',serif; font-size:22px; color:var(--text-dark); margin-bottom:4px; }
+.a-note { font-size:11px; color:var(--text-muted); font-style:italic; margin-bottom:16px; }
+
+.chart-wrap { position:relative; width:100%; }
+.chart-wrap canvas { max-width:100%; }
+
+/* Pie + legend layout */
+.pie-layout { display:grid; grid-template-columns:1fr 1fr; gap:20px; align-items:center; margin-top:12px; }
+.pie-legend { display:flex; flex-direction:column; gap:8px; }
+.pie-leg-row { display:flex; align-items:center; gap:9px; }
+.pie-dot { width:11px; height:11px; border-radius:3px; flex-shrink:0; }
+.pie-leg-name { flex:1; font-size:13px; color:var(--text-dark); text-transform:capitalize; }
+.pie-leg-pct { font-family:'Courier New',monospace; font-size:10px; color:var(--pink); letter-spacing:0.06em; }
+
+/* Fav item */
+.fav-wrap { display:flex; flex-direction:column; gap:12px; margin-top:10px; }
+.fav-img { width:100%; height:170px; border-radius:var(--r-md); display:flex; align-items:center; justify-content:center; overflow:hidden; }
+.fav-img img { width:100%; height:100%; object-fit:contain; }
+.fav-emoji { font-size:56px; }
+.fav-name { font-family:'Cormorant Garamond',serif; font-size:20px; color:var(--text-dark); }
+.fav-brand { font-size:13px; color:var(--text-muted); }
+.fav-stats { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.fav-stat { background:var(--yellow); border-radius:var(--r-md); padding:11px; text-align:center; }
+.fav-stat-val { display:block; font-family:'Cormorant Garamond',serif; font-size:22px; color:var(--text-dark); }
+.fav-stat-lbl { display:block; font-family:'Courier New',monospace; font-size:8px; color:var(--pink); letter-spacing:0.1em; margin-top:2px; }
+.fav-tags { display:flex; flex-wrap:wrap; gap:5px; }
+
+/* Category bars */
+.cat-bars { display:flex; flex-direction:column; gap:11px; margin-top:10px; }
+.cat-bar-row { display:flex; align-items:center; gap:10px; }
+.cat-bar-icon { font-size:18px; flex-shrink:0; }
+.cat-bar-info { flex:1; }
+.cat-bar-top { display:flex; justify-content:space-between; margin-bottom:4px; }
+.cat-bar-name { font-size:13px; color:var(--text-dark); text-transform:capitalize; }
+.cat-bar-count { font-family:'Courier New',monospace; font-size:9px; color:var(--pink); letter-spacing:0.08em; }
+.cat-track { height:6px; background:var(--yellow); border-radius:3px; overflow:hidden; }
+.cat-fill { height:100%; background:var(--pink); border-radius:3px; transition:width 1s ease; }
+
+/* Ranked list */
+.ranked-list { display:flex; flex-direction:column; gap:8px; margin-top:10px; }
+.ranked-row { display:flex; align-items:center; gap:9px; padding:9px 12px; background:var(--yellow); border-radius:var(--r-md); border:1.5px solid var(--border); }
+.rank-num { font-family:'Courier New',monospace; font-size:10px; color:var(--pink); min-width:22px; }
+.rank-dot { width:32px; height:32px; border-radius:var(--r-sm); flex-shrink:0; }
+.rank-info { flex:1; min-width:0; }
+.rank-name { font-size:13px; color:var(--text-dark); font-weight:500; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.rank-brand { font-size:11px; color:var(--text-muted); }
+.rank-wears { font-family:'Courier New',monospace; font-size:11px; color:var(--pink); letter-spacing:0.06em; }
+.a-empty { font-family:'Cormorant Garamond',serif; font-style:italic; color:var(--text-muted); font-size:16px; padding:30px 0; text-align:center; }
+
+@media(max-width:900px){ .kpi-strip{grid-template-columns:repeat(2,1fr);} .a-grid{grid-template-columns:1fr;} .a-card.wide,.a-card.full{grid-column:auto;} .pie-layout{grid-template-columns:1fr;} }

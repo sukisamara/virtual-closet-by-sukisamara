@@ -1,0 +1,43 @@
+/* CLOSET PAGE */
+.closet-hdr { display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:24px; flex-wrap:wrap; gap:16px; }
+.hdr-stats { display:flex; align-items:center; gap:22px; flex-wrap:wrap; }
+.hdr-stat { text-align:center; }
+.hdr-stat-val { display:block; font-family:'Cormorant Garamond',serif; font-size:26px; color:var(--text-dark); line-height:1; }
+.hdr-stat-lbl { display:block; font-family:'Courier New',monospace; font-size:8px; letter-spacing:0.14em; color:var(--pink); margin-top:2px; }
+
+.toolbar { display:flex; gap:12px; align-items:center; margin-bottom:18px; flex-wrap:wrap; }
+.search-box { flex:1; min-width:200px; display:flex; align-items:center; gap:10px; background:var(--white); border:1.5px solid var(--border); border-radius:var(--r-pill); padding:10px 18px; transition:border-color .2s; }
+.search-box:focus-within { border-color:var(--pink); }
+.search-icon { color:var(--pink); font-size:13px; }
+.search-input { flex:1; border:none; outline:none; background:transparent; font-family:'Karla',sans-serif; font-size:14px; color:var(--text-dark); }
+.search-input::placeholder { color:var(--text-muted); }
+.sort-select { padding:10px 36px 10px 16px; border:1.5px solid var(--border); border-radius:var(--r-pill); background:var(--white); color:var(--text); font-size:13px; font-family:'Karla',sans-serif; outline:none; appearance:none; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23d4608a' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 14px center; cursor:pointer; transition:border-color .2s; }
+.sort-select:focus { border-color:var(--pink); }
+
+.filters-panel { background:var(--white); border:1.5px solid var(--border); border-radius:var(--r-lg); padding:18px 22px; margin-bottom:22px; display:flex; flex-direction:column; gap:12px; }
+.filter-row { display:flex; align-items:flex-start; gap:12px; }
+.filter-row-lbl { font-family:'Courier New',monospace; font-size:9px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:var(--pink); min-width:76px; padding-top:5px; }
+.filter-pills { display:flex; flex-wrap:wrap; gap:6px; }
+
+.results-bar { display:flex; align-items:center; gap:14px; margin-bottom:18px; font-family:'Courier New',monospace; font-size:9px; letter-spacing:0.14em; color:var(--text-muted); }
+.clear-btn { background:none; border:none; color:var(--pink); font-family:'Courier New',monospace; font-size:9px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; cursor:pointer; text-decoration:underline; padding:0; }
+
+/* Card detail modal */
+.modal-overlay { position:fixed; inset:0; background:rgba(251,247,198,0.7); backdrop-filter:blur(8px); z-index:500; display:flex; align-items:center; justify-content:center; padding:24px; animation:fadeUp .25s ease; }
+.modal { background:var(--white); border:1.5px solid var(--border); border-radius:var(--r-lg); max-width:480px; width:100%; overflow:hidden; box-shadow:var(--shadow-lg); }
+.modal-img { height:240px; display:flex; align-items:center; justify-content:center; position:relative; }
+.modal-img img { width:100%; height:100%; object-fit:contain; }
+.modal-emoji { font-size:72px; }
+.modal-body { padding:24px; }
+.modal-top { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px; }
+.modal-name { font-family:'Cormorant Garamond',serif; font-size:26px; color:var(--text-dark); }
+.modal-close { background:none; border:1.5px solid var(--border); border-radius:50%; width:32px; height:32px; font-size:14px; cursor:pointer; color:var(--text-muted); display:flex; align-items:center; justify-content:center; transition:all .18s; }
+.modal-close:hover { border-color:var(--pink); color:var(--text-dark); }
+.modal-brand { font-size:14px; color:var(--text-muted); margin-bottom:16px; }
+.modal-stats { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; background:var(--yellow); border-radius:var(--r-md); padding:14px; margin-bottom:16px; }
+.mstat { text-align:center; }
+.mstat-val { display:block; font-family:'Cormorant Garamond',serif; font-size:22px; color:var(--text-dark); }
+.mstat-lbl { display:block; font-family:'Courier New',monospace; font-size:8px; color:var(--pink); letter-spacing:0.1em; margin-top:2px; }
+.modal-tags { display:flex; flex-wrap:wrap; gap:5px; margin-bottom:16px; }
+.modal-actions { display:flex; gap:8px; }
+.modal-actions .btn { flex:1; justify-content:center; }
