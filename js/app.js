@@ -282,7 +282,7 @@ function renderNavbar(activePage) {
   ];
 
   const userArea = session ? `
-    <div style="position:relative">
+    <div style="position:relative;flex-shrink:0">
       <button class="nav-avatar" id="userAvatar" onclick="toggleUserMenu()" title="${session.name}">
         ${session.initials || '✦'}
       </button>
@@ -291,12 +291,14 @@ function renderNavbar(activePage) {
           <span class="nav-user-name">${session.name}</span>
           <span class="nav-user-email">${session.email}</span>
         </div>
+        <div class="nav-menu-divider"></div>
         <a href="add.html" class="nav-menu-item">+ Add Item</a>
         <a href="calendar.html" class="nav-menu-item">◈ Calendar</a>
         <a href="analytics.html" class="nav-menu-item">◉ Style Report</a>
+        <div class="nav-menu-divider"></div>
         <button class="nav-menu-item signout" onclick="signOut()">✕ Sign Out</button>
       </div>
-    </div>` : `<a href="login.html" class="btn btn-primary" style="font-size:12px;padding:8px 18px">Sign In</a>`;
+    </div>` : `<a href="login.html" class="btn btn-primary" style="font-size:12px;padding:8px 18px;flex-shrink:0">Sign In</a>`;
 
   return `
   <nav class="navbar" id="navbar">

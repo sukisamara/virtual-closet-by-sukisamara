@@ -410,3 +410,46 @@
   .login-left { display: none; }
   .login-right { padding: 40px 24px; align-items: flex-start; padding-top: 60px; }
 }
+
+/* ── Cleaner user menu ── */
+.nav-menu-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 4px 8px;
+}
+
+.nav-user-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 6px;
+  min-width: 200px;
+  box-shadow: var(--shadow-md);
+  z-index: 300;
+  animation: fadeUp 0.2s ease;
+}
+
+.nav-user-info {
+  padding: 10px 12px 10px;
+}
+
+.nav-user-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px;
+  color: var(--text-dark);
+  display: block;
+  margin-bottom: 2px;
+}
+
+.nav-user-email {
+  font-size: 11px;
+  color: var(--text-muted);
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 176px;
+}

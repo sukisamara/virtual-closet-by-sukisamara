@@ -109,7 +109,7 @@ function dropdownBtn(label, value, activeVal, ddKey) {
 
 function render() {
   const list = filtered();
-  const totalVal = items.reduce((s,i)=>s+i.cost,0);
+  const totalVal = items.reduce((s,i)=>s+i.cost,0).toFixed(2);
   const hasFilter = activeCat!=='all'||activeAes!=='all'||activeOcc!=='all'||search;
 
   document.getElementById('main').innerHTML = `
@@ -120,7 +120,7 @@ function render() {
     </div>
     <div class="hdr-stats">
       <div class="hdr-stat"><span class="hdr-stat-val">${items.length}</span><span class="hdr-stat-lbl">items</span></div>
-      <div class="hdr-stat"><span class="hdr-stat-val">$${totalVal}</span><span class="hdr-stat-lbl">total value</span></div>
+      <div class="hdr-stat"><span class="hdr-stat-val">$${parseFloat(totalVal).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}</span><span class="hdr-stat-lbl">total value</span></div>
       <a href="add.html" class="btn btn-primary">+ Add Item</a>
     </div>
   </div>
