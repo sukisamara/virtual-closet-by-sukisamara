@@ -188,3 +188,22 @@
   .flat-main-row { grid-template-columns:1fr 1fr; }
   .flat-extras-row { grid-template-columns:1fr 1fr; }
 }
+
+/* Smart algorithm UI additions */
+.outfit-reason {
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+  font-size:15px;
+  color:var(--text-muted);
+  margin-top:4px;
+}
+.outfit-reason strong { color:var(--text-dark); font-style:normal; }
+
+.sdp-compat {
+  font-family:'Courier New',monospace;
+  font-size:9px;
+  letter-spacing:.14em;
+  color:var(--pink);
+  margin-top:6px;
+  text-transform:uppercase;
+}
