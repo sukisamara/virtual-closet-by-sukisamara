@@ -34,8 +34,23 @@
 /* Modal */
 .modal-overlay { position:fixed; inset:0; background:rgba(251,247,198,.7); backdrop-filter:blur(8px); z-index:500; display:flex; align-items:center; justify-content:center; padding:24px; animation:fadeUp .25s ease; }
 .modal { background:var(--white); border:1.5px solid var(--border); border-radius:var(--r-lg); max-width:460px; width:100%; overflow:hidden; box-shadow:var(--shadow-lg); }
-.modal-img { height:280px; display:flex; align-items:center; justify-content:center; overflow:hidden; padding:12px; }
-.modal-img img { width:100%; height:100%; object-fit:contain; }
+.modal-img { 
+  min-height:240px;
+  max-height:340px;
+  display:flex; 
+  align-items:center; 
+  justify-content:center; 
+  overflow:hidden;
+  padding:16px;
+}
+.modal-img img { 
+  width:auto;
+  max-width:100%;
+  height:auto;
+  max-height:300px;
+  object-fit:contain;
+  display:block;
+}
 .modal-body { padding:22px; }
 .modal-top { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:6px; }
 .modal-name { font-family:'Cormorant Garamond',serif; font-size:24px; color:var(--text-dark); }
