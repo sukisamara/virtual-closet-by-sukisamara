@@ -27,27 +27,137 @@ const CATEGORIES = [
 
 const PALETTE = ['#f9c6d8','#e8d5c4','#d4c8e8','#c8d8e8','#c8e8d4','#f0e6c8','#f4d4c0','#e8c8c8','#fce4d6','#e4d6fc'];
 
-// ─── SAMPLE IMAGES (Unsplash — free to use) ───
-const SAMPLE_IMAGES = {
-  tops:        'https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=400&q=80',
-  bottoms:     'https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=400&q=80',
-  skirts:      'https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?w=400&q=80',
-  dresses:     'https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=400&q=80',
-  outerwear:   'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=400&q=80',
-  shoes:       'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&q=80',
-  bags:        'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=400&q=80',
-  accessories: 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=400&q=80',
-};
-
+// ─── REAL SEED ITEMS — your actual wardrobe ───
 const SEED_ITEMS = [
-  { id:'s1', name:'Silk Slip Dress',        brand:'Reformation',     cost:220, category:'dresses',     subcategory:'slip dress',         aesthetics:['soft glam','clean girl'],     occasions:['date night','going out'],         color:'#f9c6d8', wears:7,  image: SAMPLE_IMAGES.dresses,     addedAt: Date.now()-86400000*10, sample:true },
-  { id:'s2', name:'Tailored Linen Blazer',  brand:'Zara',            cost:95,  category:'outerwear',   subcategory:'blazer',             aesthetics:['quiet luxury','old money'],   occasions:['office wear','brunch'],           color:'#e8d5c4', wears:14, image: SAMPLE_IMAGES.outerwear,   addedAt: Date.now()-86400000*20, sample:true },
-  { id:'s3', name:'Pleated Midi Skirt',     brand:'ASOS',            cost:42,  category:'skirts',      subcategory:'pleated midi',       aesthetics:['Y2K','ballet core'],          occasions:['going out','brunch'],             color:'#d4c8e8', wears:5,  image: SAMPLE_IMAGES.skirts,      addedAt: Date.now()-86400000*5,  sample:true },
-  { id:'s4', name:'Statement Earrings',     brand:'Mejuri',          cost:78,  category:'accessories', subcategory:'statement earrings', aesthetics:['soft glam','quiet luxury'],   occasions:['office wear','date night'],       color:'#f0e6c8', wears:22, image: SAMPLE_IMAGES.accessories, addedAt: Date.now()-86400000*30, sample:true },
-  { id:'s5', name:'Wide Leg Trousers',      brand:'COS',             cost:115, category:'bottoms',     subcategory:'wide leg trousers',  aesthetics:['minimalist','old money'],     occasions:['office wear','business formal'],  color:'#c8d8e8', wears:18, image: SAMPLE_IMAGES.bottoms,     addedAt: Date.now()-86400000*15, sample:true },
-  { id:'s6', name:'Strappy Kitten Heels',   brand:'Steve Madden',    cost:88,  category:'shoes',       subcategory:'kitten heels',       aesthetics:['ballet core','soft glam'],    occasions:['going out','date night'],         color:'#f4d4c0', wears:6,  image: SAMPLE_IMAGES.shoes,       addedAt: Date.now()-86400000*8,  sample:true },
-  { id:'s7', name:'Ribbed Knit Top',        brand:'Mango',           cost:38,  category:'tops',        subcategory:'knit top',           aesthetics:['clean girl','minimalist'],    occasions:['casual everyday','brunch'],       color:'#f0c4d4', wears:11, image: SAMPLE_IMAGES.tops,        addedAt: Date.now()-86400000*12, sample:true },
-  { id:'s8', name:'Mini Leather Crossbody', brand:'Charles & Keith', cost:58,  category:'bags',        subcategory:'crossbody bag',      aesthetics:['quiet luxury','minimalist'],  occasions:['casual everyday','going out'],    color:'#e8c8b8', wears:30, image: SAMPLE_IMAGES.bags,        addedAt: Date.now()-86400000*25, sample:true },
+  // ── BAGS ──
+  {
+    id:'bag1', name:'Cassette Intrecciato Shoulder Bag', brand:'Bottega Veneta',
+    cost:4312, category:'bags', subcategory:'crossbody bag',
+    aesthetics:['quiet luxury','old money','mob wife'],
+    occasions:['going out','date night','wedding guest','business formal'],
+    color:'#c8a882', wears:0, image:'assets/items/bag1.png', addedAt:Date.now()-86400000*30, sample:true
+  },
+  {
+    id:'bag2', name:'Calla Woven Tote Bag', brand:'Charles & Keith',
+    cost:115, category:'bags', subcategory:'woven bag',
+    aesthetics:['boho chic','coastal grandmother','cottage core'],
+    occasions:['casual everyday','brunch','beach & holiday','travel'],
+    color:'#b8845a', wears:0, image:'assets/items/bag2.png', addedAt:Date.now()-86400000*25, sample:true
+  },
+  {
+    id:'bag3', name:'Floral Beaded Shoulder Bag', brand:'ASOS Design',
+    cost:77.99, category:'bags', subcategory:'shoulder bag',
+    aesthetics:['Y2K','soft glam','mermaid core'],
+    occasions:['going out','date night','festival','brunch'],
+    color:'#f0ecc0', wears:0, image:'assets/items/bag3.png', addedAt:Date.now()-86400000*20, sample:true
+  },
+  {
+    id:'bag4', name:'Ruched Pocket Tote Bag in Mono Gingham', brand:'ASOS Design',
+    cost:44.99, category:'bags', subcategory:'canvas tote',
+    aesthetics:['cottage core','preppy','clean girl'],
+    occasions:['casual everyday','travel','brunch','festival'],
+    color:'#c8c0b0', wears:0, image:'assets/items/bag4.png', addedAt:Date.now()-86400000*18, sample:true
+  },
+  {
+    id:'bag5', name:'Woven Carry All Bag', brand:'Calvin Klein',
+    cost:359.49, category:'bags', subcategory:'structured handbag',
+    aesthetics:['minimalist','quiet luxury','old money'],
+    occasions:['office wear','business formal','casual everyday'],
+    color:'#1a1a1a', wears:0, image:'assets/items/bag5.png', addedAt:Date.now()-86400000*15, sample:true
+  },
+  {
+    id:'bag6', name:'Levy Nylon Tote Bag', brand:'Charles & Keith',
+    cost:89.90, category:'bags', subcategory:'oversized tote',
+    aesthetics:['minimalist','clean girl','old money'],
+    occasions:['office wear','casual everyday','travel'],
+    color:'#222222', wears:0, image:'assets/items/bag6.png', addedAt:Date.now()-86400000*12, sample:true
+  },
+  {
+    id:'bag7', name:'Small Split Leather Bag', brand:'Mango',
+    cost:119.90, category:'bags', subcategory:'hobo bag',
+    aesthetics:['mob wife','mermaid core','Y2K','soft glam'],
+    occasions:['going out','date night','festival'],
+    color:'#1a5fcc', wears:0, image:'assets/items/bag7.png', addedAt:Date.now()-86400000*10, sample:true
+  },
+  {
+    id:'bag8', name:'ALEX Tote II', brand:'Rabeanco',
+    cost:410.00, category:'bags', subcategory:'structured handbag',
+    aesthetics:['quiet luxury','minimalist','dark academia'],
+    occasions:['office wear','business formal','casual everyday','date night'],
+    color:'#1c1c1c', wears:0, image:'assets/items/bag8.png', addedAt:Date.now()-86400000*8, sample:true
+  },
+
+  // ── DRESSES ──
+  {
+    id:'dress1', name:'ZW Collection Jacquard Lace Dress', brand:'Zara',
+    cost:109.00, category:'dresses', subcategory:'slip dress',
+    aesthetics:['soft glam','cottage core','ballet core'],
+    occasions:['date night','going out','brunch','wedding guest'],
+    color:'#b8d4b0', wears:0, image:'assets/items/dress1.png', addedAt:Date.now()-86400000*28, sample:true
+  },
+  {
+    id:'dress2', name:'Flared Cotton Dress', brand:'Mango',
+    cost:75.90, category:'dresses', subcategory:'sundress',
+    aesthetics:['clean girl','minimalist','coastal grandmother'],
+    occasions:['casual everyday','brunch','beach & holiday','travel'],
+    color:'#f5e878', wears:0, image:'assets/items/dress2.png', addedAt:Date.now()-86400000*24, sample:true
+  },
+  {
+    id:'dress3', name:'Beaded Camisole Dress', brand:'Zara',
+    cost:89.90, category:'dresses', subcategory:'mini dress',
+    aesthetics:['soft glam','Y2K','mermaid core'],
+    occasions:['going out','date night','festival','wedding guest'],
+    color:'#f0ece0', wears:0, image:'assets/items/dress3.png', addedAt:Date.now()-86400000*22, sample:true
+  },
+  {
+    id:'dress4', name:'Combined Strap Midi Dress', brand:'Massimo Dutti',
+    cost:199.00, category:'dresses', subcategory:'midi wrap dress',
+    aesthetics:['minimalist','old money','quiet luxury'],
+    occasions:['office wear','date night','business formal','casual everyday'],
+    color:'#1c1c1c', wears:0, image:'assets/items/dress4.png', addedAt:Date.now()-86400000*20, sample:true
+  },
+  {
+    id:'dress5', name:'Short Checked Bodice Dress', brand:'Stradivarius',
+    cost:29.99, category:'dresses', subcategory:'mini dress',
+    aesthetics:['preppy','cottage core','Y2K'],
+    occasions:['casual everyday','brunch','date night','festival'],
+    color:'#c8a8a0', wears:0, image:'assets/items/dress5.png', addedAt:Date.now()-86400000*16, sample:true
+  },
+  {
+    id:'dress6', name:'Denim Midi Dress', brand:'Massimo Dutti',
+    cost:245.00, category:'dresses', subcategory:'midi wrap dress',
+    aesthetics:['old money','quiet luxury','clean girl'],
+    occasions:['casual everyday','brunch','date night','travel'],
+    color:'#2c3e60', wears:0, image:'assets/items/dress6.png', addedAt:Date.now()-86400000*14, sample:true
+  },
+  {
+    id:'dress7', name:'Halter Dress with Buttons', brand:'Bershka',
+    cost:75.90, category:'dresses', subcategory:'mini dress',
+    aesthetics:['soft glam','ballet core','Y2K'],
+    occasions:['going out','date night','festival','brunch'],
+    color:'#f4c8c0', wears:0, image:'assets/items/dress7.png', addedAt:Date.now()-86400000*10, sample:true
+  },
+  {
+    id:'dress8', name:'Polka Dot Short Qipao Dress', brand:'Stradivarius',
+    cost:25.99, category:'dresses', subcategory:'mini dress',
+    aesthetics:['preppy','Y2K','cottage core'],
+    occasions:['casual everyday','brunch','date night'],
+    color:'#f0f0f0', wears:0, image:'assets/items/dress8.png', addedAt:Date.now()-86400000*8, sample:true
+  },
+  {
+    id:'dress9', name:'Halter Paisley Dress', brand:'Mango',
+    cost:99.90, category:'dresses', subcategory:'sundress',
+    aesthetics:['boho chic','mermaid core','coastal grandmother'],
+    occasions:['beach & holiday','festival','brunch','casual everyday'],
+    color:'#f07820', wears:0, image:'assets/items/dress9.png', addedAt:Date.now()-86400000*5, sample:true
+  },
+  {
+    id:'dress10', name:'ZW Collection Printed Slip Dress', brand:'Zara',
+    cost:119.00, category:'dresses', subcategory:'slip dress',
+    aesthetics:['soft glam','old money','boho chic'],
+    occasions:['date night','going out','brunch','wedding guest'],
+    color:'#e8c8c0', wears:0, image:'assets/items/dress10.png', addedAt:Date.now()-86400000*3, sample:true
+  },
 ];
 
 // ─── STORAGE ───
@@ -88,14 +198,12 @@ function getAestheticStats(items, wearLog) {
   return Object.entries(counts).map(([name,value])=>({name,value})).sort((a,b)=>b.value-a.value);
 }
 
-// ─── NAVBAR SCROLL ───
+// ─── NAVBAR ───
 function initNavScroll() {
   const nav = document.querySelector('.navbar');
   if (!nav) return;
   window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 20); });
 }
-
-// ─── HAMBURGER ───
 function initHamburger() {
   const btn = document.querySelector('.hamburger');
   const links = document.querySelector('.nav-links');
@@ -104,21 +212,17 @@ function initHamburger() {
   links.querySelectorAll('.nav-link').forEach(l => l.addEventListener('click', () => links.classList.remove('open')));
 }
 
-// ─── MOCK WEATHER ───
+// ─── WEATHER ───
 const WEATHERS = [
-  { temp:24, condition:'sunny',  desc:'Clear & sunny',   icon:'☀️',  humidity:55, wind:12 },
-  { temp:18, condition:'cloudy', desc:'Partly cloudy',   icon:'⛅',  humidity:68, wind:18 },
-  { temp:14, condition:'rainy',  desc:'Light rain',      icon:'🌧️', humidity:82, wind:22 },
-  { temp:28, condition:'hot',    desc:'Hot & bright',    icon:'🌞',  humidity:45, wind:8  },
-  { temp:10, condition:'cold',   desc:'Cold & breezy',   icon:'🌬️', humidity:72, wind:35 },
+  { temp:24, condition:'sunny',  desc:'Clear & sunny',  icon:'☀️',  humidity:55, wind:12 },
+  { temp:18, condition:'cloudy', desc:'Partly cloudy',  icon:'⛅',  humidity:68, wind:18 },
+  { temp:14, condition:'rainy',  desc:'Light rain',     icon:'🌧️', humidity:82, wind:22 },
+  { temp:28, condition:'hot',    desc:'Hot & bright',   icon:'🌞',  humidity:45, wind:8  },
+  { temp:10, condition:'cold',   desc:'Cold & breezy',  icon:'🌬️', humidity:72, wind:35 },
 ];
+function getMockWeather() { return WEATHERS[Math.floor(new Date().getHours()/5) % WEATHERS.length]; }
 
-function getMockWeather() {
-  const h = new Date().getHours();
-  return WEATHERS[Math.floor(h/5) % WEATHERS.length];
-}
-
-// ─── CONNECT GCAL (mock) ───
+// ─── GCAL ───
 function connectGcal() {
   const today = new Date();
   const fmt = d => d.toISOString().split('T')[0];
@@ -134,7 +238,7 @@ function connectGcal() {
   return demoEvents;
 }
 
-// ─── RENDER NAVBAR ───
+// ─── NAVBAR HTML ───
 function renderNavbar(activePage) {
   const pages = [
     { href:'index.html',     label:'Today',     glyph:'✦' },
@@ -156,19 +260,14 @@ function renderNavbar(activePage) {
       <div class="nav-links" id="navLinks">
         ${pages.map(p=>`<a href="${p.href}" class="nav-link${p.href===activePage?' active':''}"><span class="glyph">${p.glyph}</span>${p.label}</a>`).join('')}
       </div>
-      <button class="hamburger" id="hamburger" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
+      <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
   </nav>`;
 }
 
-// ─── RENDER FOOTER (slim) ───
+// ─── FOOTER ───
 function renderFooter() {
-  return `
-  <footer class="footer">
-    <p>Virtual Closet by Suki Samara &nbsp;·&nbsp; Est. 2026</p>
-  </footer>`;
+  return `<footer class="footer"><p>Virtual Closet by Suki Samara &nbsp;·&nbsp; Est. 2026</p></footer>`;
 }
 
 // ─── INIT ───
@@ -176,3 +275,18 @@ document.addEventListener('DOMContentLoaded', () => {
   initNavScroll();
   initHamburger();
 });
+
+// ─── VERSION / SEED RESET ───
+// If the stored data has old sample items (no real photos), clear it so new seed loads
+(function() {
+  try {
+    const stored = JSON.parse(localStorage.getItem('sc-items') || 'null');
+    if (stored) {
+      const hasOldSeed = stored.some(i => i.id && i.id.startsWith('s') && !i.id.startsWith('bag') && !i.id.startsWith('dress'));
+      if (hasOldSeed) {
+        localStorage.removeItem('sc-items');
+        localStorage.removeItem('sc-wearlog');
+      }
+    }
+  } catch(e) {}
+})();
