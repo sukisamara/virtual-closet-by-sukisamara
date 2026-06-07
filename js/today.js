@@ -1,187 +1,157 @@
-// TODAY.JS
+// TODAY.JS — flat card layout
 
 const DAYS   = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 
-const SLOT_DEFS = [
-  { key:'top',       label:'Top',            cats:['tops'],             bodyPos:'top'       },
-  { key:'bottom',    label:'Bottom / Skirt', cats:['bottoms','skirts'], bodyPos:'bottom'    },
-  { key:'dress',     label:'Dress',          cats:['dresses'],          bodyPos:'full'      },
-  { key:'outerwear', label:'Layer',          cats:['outerwear'],        bodyPos:'outer'     },
-  { key:'shoes',     label:'Shoes',          cats:['shoes'],            bodyPos:'shoes'     },
-  { key:'bag',       label:'Bag',            cats:['bags'],             bodyPos:'bag'       },
-  { key:'accessory', label:'Accessory',      cats:['accessories'],      bodyPos:'accessory' },
+// Main clothing slots (bigger cards)
+const MAIN_SLOTS = [
+  { key:'dress',     label:'Dress',          cats:['dresses']           },
+  { key:'top',       label:'Top',            cats:['tops']              },
+  { key:'bottom',    label:'Bottom / Skirt', cats:['bottoms','skirts']  },
+  { key:'outerwear', label:'Layer',          cats:['outerwear']         },
 ];
 
-let items    = getItems();
-let wearLog  = getWearLog();
-let events   = getEvents();
-let weather  = getMockWeather();
-let gcalConn = getGcal();
+// Smaller accent slots
+const EXTRA_SLOTS = [
+  { key:'shoes',     label:'Shoes',     cats:['shoes']       },
+  { key:'bag',       label:'Bag',       cats:['bags']        },
+  { key:'accessory', label:'Accessory', cats:['accessories'] },
+];
 
-let outfit      = {};
-let slotIndices = {};
-let logged      = false;
-let showWPicker = false;
-let activeSlotKey = null; // which slot the side panel shows
+const ALL_SLOTS = [...MAIN_SLOTS, ...EXTRA_SLOTS];
+
+let items      = getItems();
+let wearLog    = getWearLog();
+let events     = getEvents();
+let weather    = getMockWeather();
+let gcalConn   = getGcal();
+let outfit     = {};
+let slotIdx    = {};
+let logged     = false;
+let showWPicker= false;
+let activeKey  = null;
 
 const now      = new Date();
 const todayStr = now.toISOString().split('T')[0];
 
-function getTodayEvents() { return events.filter(e => e.date === todayStr); }
-function getOccasion()    { return getTodayEvents()[0]?.type || 'casual everyday'; }
-function getPool(slot)    { return items.filter(i => slot.cats.includes(i.category)); }
+function getTodayEvents(){ return events.filter(e => e.date === todayStr); }
+function getOccasion()   { return getTodayEvents()[0]?.type || 'casual everyday'; }
+function getPool(slot)   { return items.filter(i => slot.cats.includes(i.category)); }
 
-function generateOutfit() {
-  outfit = {}; slotIndices = {}; logged = false; activeSlotKey = null;
-  const useDress = items.filter(i=>i.category==='dresses').length > 0 && Math.random() > 0.45;
-  SLOT_DEFS.forEach(slot => {
-    if (slot.key==='dress' && !useDress) return;
-    if ((slot.key==='top'||slot.key==='bottom') && useDress) return;
+function generateOutfit(){
+  outfit = {}; slotIdx = {}; logged = false; activeKey = null;
+  const useDress = items.filter(i => i.category === 'dresses').length > 0 && Math.random() > 0.45;
+  ALL_SLOTS.forEach(slot => {
+    if (slot.key === 'dress'  && !useDress) return;
+    if ((slot.key === 'top' || slot.key === 'bottom') && useDress) return;
     const pool = getPool(slot);
     if (!pool.length) return;
-    const idx = Math.floor(Math.random()*pool.length);
-    slotIndices[slot.key] = idx;
-    outfit[slot.key] = pool[idx];
+    const idx = Math.floor(Math.random() * pool.length);
+    slotIdx[slot.key] = idx;
+    outfit[slot.key]  = pool[idx];
   });
   renderMain();
 }
 
-function cycleSlot(key, dir) {
-  const slot = SLOT_DEFS.find(s=>s.key===key);
+function cycleSlot(key, dir, e){
+  e && e.stopPropagation();
+  const slot = ALL_SLOTS.find(s => s.key === key);
   const pool = getPool(slot);
   if (pool.length < 2) return;
-  const cur  = slotIndices[key] ?? 0;
-  const next = ((cur+dir)+pool.length) % pool.length;
-  slotIndices[key] = next;
-  outfit[key] = pool[next];
+  const next = ((slotIdx[key] + dir) + pool.length) % pool.length;
+  slotIdx[key]  = next;
+  outfit[key]   = pool[next];
   renderMain();
 }
 
-function selectSlot(key) {
-  activeSlotKey = activeSlotKey === key ? null : key;
+function selectSlot(key){
+  activeKey = activeKey === key ? null : key;
   renderMain();
 }
 
-function logWearToday() {
+function logWearToday(){
   if (logged) return;
-  const ids = Object.values(outfit).filter(Boolean).map(i=>i.id);
+  const ids = Object.values(outfit).filter(Boolean).map(i => i.id);
   wearLog.push({ id:'w-'+Date.now(), itemIds:ids, date:todayStr });
   saveWearLog(wearLog);
-  ids.forEach(id => { const it=items.find(i=>i.id===id); if(it) it.wears++; });
+  ids.forEach(id => { const it = items.find(i => i.id === id); if (it) it.wears++; });
   saveItems(items);
   logged = true;
   renderMain();
 }
 
-function handleConnectGcal() {
-  connectGcal(); gcalConn=true; events=getEvents(); generateOutfit();
-}
+function handleConnectGcal(){ connectGcal(); gcalConn = true; events = getEvents(); generateOutfit(); }
+function toggleWeatherPicker(){ showWPicker = !showWPicker; renderMain(); }
+function pickWeather(i){ weather = WEATHERS[i]; showWPicker = false; generateOutfit(); }
 
-// ── Build the mannequin body SVG with outfit images layered on ──
-function buildBody() {
-  const top       = outfit['top']       || outfit['dress'];
-  const bottom    = outfit['bottom'];
-  const dress     = outfit['dress'];
-  const outer     = outfit['outerwear'];
-  const shoes     = outfit['shoes'];
-  const bag       = outfit['bag'];
-  const acc       = outfit['accessory'];
+function slotCard(slot, isExtra){
+  const item = outfit[slot.key];
+  if (!item) return '';
+  const pool = getPool(slot);
+  const isActive = activeKey === slot.key;
 
-  // Each "zone" is a clickable region on the body shape
-  const activeSlots = SLOT_DEFS.filter(s => outfit[s.key]);
+  const imgHtml = item.image
+    ? `<img src="${item.image}" alt="${item.name}" />`
+    : `<div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;color:var(--text-muted);padding:12px;text-align:center">${item.subcategory||item.category}</div>`;
 
   return `
-  <div class="body-figure">
-    <!-- Central mannequin silhouette -->
-    <div class="mannequin">
-      <svg class="mannequin-svg" viewBox="0 0 200 480" xmlns="http://www.w3.org/2000/svg">
-        <!-- neck + head -->
-        <ellipse cx="100" cy="38" rx="26" ry="30" fill="#fce4ef" stroke="#f4a2c3" stroke-width="1.5"/>
-        <!-- shoulders -->
-        <path d="M40 95 Q100 75 160 95 L168 200 Q100 215 32 200 Z" fill="#fce4ef" stroke="#f4a2c3" stroke-width="1.5"/>
-        <!-- torso -->
-        <rect x="45" y="195" width="110" height="110" rx="8" fill="#fce4ef" stroke="#f4a2c3" stroke-width="1.5"/>
-        <!-- hips -->
-        <path d="M38 295 Q100 310 162 295 L158 360 Q100 375 42 360 Z" fill="#fce4ef" stroke="#f4a2c3" stroke-width="1.5"/>
-        <!-- legs -->
-        <rect x="48" y="355" width="44" height="110" rx="6" fill="#fce4ef" stroke="#f4a2c3" stroke-width="1.5"/>
-        <rect x="108" y="355" width="44" height="110" rx="6" fill="#fce4ef" stroke="#f4a2c3" stroke-width="1.5"/>
-        <!-- feet -->
-        <ellipse cx="70" cy="468" rx="26" ry="10" fill="#fce4ef" stroke="#f4a2c3" stroke-width="1.5"/>
-        <ellipse cx="130" cy="468" rx="26" ry="10" fill="#fce4ef" stroke="#f4a2c3" stroke-width="1.5"/>
-      </svg>
-
-      <!-- Outfit image layers overlaid on body zones -->
-      ${dress ? `
-        <div class="body-layer body-dress" onclick="selectSlot('dress')" title="${dress.name}" style="border-color:${activeSlotKey==='dress'?'var(--pink-dark)':'transparent'}">
-          <img src="${dress.image||''}" alt="${dress.name}" onerror="this.style.display='none'" />
-        </div>` : ''}
-      ${top && !dress ? `
-        <div class="body-layer body-top" onclick="selectSlot('top')" title="${top.name}" style="border-color:${activeSlotKey==='top'?'var(--pink-dark)':'transparent'}">
-          <img src="${top.image||''}" alt="${top.name}" onerror="this.style.display='none'" />
-        </div>` : ''}
-      ${bottom ? `
-        <div class="body-layer body-bottom" onclick="selectSlot('bottom')" title="${bottom.name}" style="border-color:${activeSlotKey==='bottom'?'var(--pink-dark)':'transparent'}">
-          <img src="${bottom.image||''}" alt="${bottom.name}" onerror="this.style.display='none'" />
-        </div>` : ''}
-      ${outer ? `
-        <div class="body-layer body-outer" onclick="selectSlot('outerwear')" title="${outer.name}" style="border-color:${activeSlotKey==='outerwear'?'var(--pink-dark)':'transparent'}">
-          <img src="${outer.image||''}" alt="${outer.name}" onerror="this.style.display='none'" />
-        </div>` : ''}
-      ${shoes ? `
-        <div class="body-layer body-shoes" onclick="selectSlot('shoes')" title="${shoes.name}" style="border-color:${activeSlotKey==='shoes'?'var(--pink-dark)':'transparent'}">
-          <img src="${shoes.image||''}" alt="${shoes.name}" onerror="this.style.display='none'" />
-        </div>` : ''}
-    </div>
-
-    <!-- Side accessories column -->
-    <div class="body-accessories">
-      ${bag ? `
-      <div class="acc-chip${activeSlotKey==='bag'?' active':''}" onclick="selectSlot('bag')" title="${bag.name}">
-        ${bag.image ? `<img src="${bag.image}" alt="${bag.name}" />` : '<span>👜</span>'}
-        <span class="acc-chip-label">Bag</span>
-      </div>` : ''}
-      ${acc ? `
-      <div class="acc-chip${activeSlotKey==='accessory'?' active':''}" onclick="selectSlot('accessory')" title="${acc.name}">
-        ${acc.image ? `<img src="${acc.image}" alt="${acc.name}" />` : '<span>✨</span>'}
-        <span class="acc-chip-label">Accessory</span>
-      </div>` : ''}
-    </div>
-  </div>
-
-  <!-- Slot detail panel (shows when a zone is tapped) -->
-  ${activeSlotKey && outfit[activeSlotKey] ? (() => {
-    const slot = SLOT_DEFS.find(s=>s.key===activeSlotKey);
-    const item = outfit[activeSlotKey];
-    const pool = getPool(slot);
-    return `
-    <div class="slot-panel fade-up">
-      <div class="slot-panel-img" style="background:linear-gradient(135deg,${item.color}44,${item.color}88)">
-        ${item.image ? `<img src="${item.image}" alt="${item.name}" />` : ''}
-      </div>
-      <div class="slot-panel-info">
-        <span class="eyebrow">${slot.label}</span>
-        <h3 class="slot-panel-name">${item.name}</h3>
-        <p class="slot-panel-brand">${item.brand}</p>
-        <div class="slot-panel-tags">${item.aesthetics.map(a=>`<span class="pill">${a}</span>`).join('')}</div>
-        <div class="slot-panel-arrows">
-          <button class="arrow-btn" onclick="cycleSlot('${activeSlotKey}',-1)" ${pool.length<2?'disabled':''}>‹ Prev</button>
-          <span class="eyebrow" style="margin:0">${pool.length} options</span>
-          <button class="arrow-btn" onclick="cycleSlot('${activeSlotKey}',1)" ${pool.length<2?'disabled':''}>Next ›</button>
+  <div class="flat-slot">
+    <span class="flat-slot-label">${slot.label}</span>
+    <div class="flat-slot-card${isActive?' active-slot':''}" onclick="selectSlot('${slot.key}')">
+      <div class="flat-slot-img" style="background:linear-gradient(135deg,${item.color}38,${item.color}80)">
+        ${imgHtml}
+        <div class="flat-slot-arrows">
+          <button class="flat-arrow" onclick="cycleSlot('${slot.key}',-1,event)" ${pool.length<2?'disabled':''}>‹</button>
+          <button class="flat-arrow" onclick="cycleSlot('${slot.key}',1,event)" ${pool.length<2?'disabled':''}>›</button>
         </div>
       </div>
-    </div>`;
-  })() : ''}`;
+      <div class="flat-slot-meta">
+        <span class="flat-slot-name">${item.name}</span>
+        <span class="flat-slot-brand">${item.brand}</span>
+      </div>
+    </div>
+    ${pool.length > 1 ? `<span class="flat-slot-count">${pool.length} options</span>` : ''}
+  </div>`;
 }
 
-function renderMain() {
+function detailPanel(){
+  if (!activeKey || !outfit[activeKey]) return '';
+  const slot = ALL_SLOTS.find(s => s.key === activeKey);
+  const item = outfit[activeKey];
+  const pool = getPool(slot);
+
+  return `
+  <div class="slot-detail-panel">
+    <div class="sdp-img" style="background:linear-gradient(135deg,${item.color}44,${item.color}88)">
+      ${item.image ? `<img src="${item.image}" alt="${item.name}" />` : ''}
+    </div>
+    <div class="sdp-info">
+      <span class="sdp-label">${slot.label}</span>
+      <p class="sdp-name">${item.name}</p>
+      <p class="sdp-brand">${item.brand}</p>
+      <div class="sdp-tags">
+        ${item.aesthetics.map(a=>`<span class="pill">${a}</span>`).join('')}
+        ${item.occasions.slice(0,2).map(o=>`<span class="pill">${o}</span>`).join('')}
+      </div>
+    </div>
+    <div class="sdp-arrows">
+      <button class="sdp-arrow-btn" onclick="cycleSlot('${activeKey}',-1,event)" ${pool.length<2?'disabled':''}>‹ Prev</button>
+      <span class="sdp-count">${pool.length} options</span>
+      <button class="sdp-arrow-btn" onclick="cycleSlot('${activeKey}',1,event)" ${pool.length<2?'disabled':''}>Next ›</button>
+    </div>
+  </div>`;
+}
+
+function renderMain(){
   const todayEvents = getTodayEvents();
   const occasion    = getOccasion();
-  const activeSlots = SLOT_DEFS.filter(s => outfit[s.key]);
+
+  // Only include slots that have items
+  const activeMain  = MAIN_SLOTS.filter(s => outfit[s.key]);
+  const activeExtra = EXTRA_SLOTS.filter(s => outfit[s.key]);
 
   document.getElementById('main').innerHTML = `
-  <!-- Hero bar -->
+  <!-- Hero -->
   <div class="today-hero fade-up">
     <div class="date-block">
       <span class="eyebrow">${DAYS[now.getDay()]}</span>
@@ -213,7 +183,9 @@ function renderMain() {
           </div>
           <button class="weather-change" onclick="toggleWeatherPicker()">${showWPicker?'✕':'Change'}</button>
         </div>
-        ${showWPicker?`<div class="weather-picker">${WEATHERS.map((w,i)=>`<button class="weather-opt${weather.desc===w.desc?' active':''}" onclick="pickWeather(${i})">${w.icon} ${w.desc} · ${w.temp}°C</button>`).join('')}</div>`:''}
+        ${showWPicker?`<div class="weather-picker">${WEATHERS.map((w,i)=>`
+          <button class="weather-opt${weather.desc===w.desc?' active':''}" onclick="pickWeather(${i})">${w.icon} ${w.desc} · ${w.temp}°C</button>`).join('')}
+        </div>`:''}
       </div>
     </div>
   </div>
@@ -225,7 +197,7 @@ function renderMain() {
         <span class="eyebrow">Today's Look</span>
         <h2 class="section-title">Your outfit for <em>${occasion}</em></h2>
       </div>
-      <div style="display:flex;gap:10px;align-items:center">
+      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
         ${logged
           ? `<span class="logged-inline">✦ Outfit logged!</span>`
           : `<button class="btn btn-ghost" onclick="logWearToday()">✦ I'm wearing this</button>`}
@@ -234,14 +206,19 @@ function renderMain() {
     </div>
 
     ${items.length === 0
-      ? `<div class="empty-state"><span class="empty-icon">✿</span><p>Your closet is empty</p><a href="add.html" class="btn btn-primary">Add your first item</a></div>`
-      : `<div class="body-layout">${buildBody()}</div>`
+      ? `<div class="empty-state">
+          <span class="empty-icon">✿</span>
+          <p>Your closet is empty</p>
+          <a href="add.html" class="btn btn-primary">Add your first item</a>
+        </div>`
+      : `<div class="flat-outfit">
+          ${activeMain.length ? `<div class="flat-main-row">${activeMain.map(s=>slotCard(s,false)).join('')}</div>` : ''}
+          ${activeExtra.length ? `<div class="flat-extras-row">${activeExtra.map(s=>slotCard(s,true)).join('')}</div>` : ''}
+          ${detailPanel()}
+        </div>`
     }
   </div>`;
 }
-
-function toggleWeatherPicker() { showWPicker=!showWPicker; renderMain(); }
-function pickWeather(i) { weather=WEATHERS[i]; showWPicker=false; generateOutfit(); }
 
 document.getElementById('navbar-mount').innerHTML = renderNavbar('index.html');
 document.getElementById('footer-mount').innerHTML = renderFooter();
