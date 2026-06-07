@@ -1,0 +1,291 @@
+/* ─── MY CIRCLE ─── */
+
+.circle-layout { display: grid; grid-template-columns: 300px 1fr; gap: 28px; align-items: start; }
+
+/* Sidebar — friends list */
+.circle-sidebar {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  position: sticky;
+  top: 82px;
+}
+
+.circle-sidebar-hdr {
+  padding: 20px 22px;
+  border-bottom: 1.5px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.circle-sidebar-hdr h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  color: var(--text-dark);
+}
+
+.add-friend-btn {
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  background: var(--pink);
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.18s;
+}
+.add-friend-btn:hover { background: var(--pink-dark); transform: scale(1.08); }
+
+.friend-list { padding: 8px; }
+
+.friend-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: var(--r-md);
+  cursor: pointer;
+  transition: all 0.18s;
+}
+.friend-item:hover { background: var(--pink-mist); }
+.friend-item.active { background: var(--pink-mist); border: 1.5px solid var(--border); }
+
+.friend-avatar {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: var(--pink);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px; font-weight: 600; color: #fff;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.friend-online-dot {
+  position: absolute;
+  bottom: 1px; right: 1px;
+  width: 10px; height: 10px;
+  background: #2d8a4e;
+  border-radius: 50%;
+  border: 2px solid var(--white);
+}
+
+.friend-info { flex: 1; min-width: 0; }
+.friend-name { font-size: 14px; font-weight: 500; color: var(--text-dark); }
+.friend-last { font-size: 11px; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+.friend-actions { display: flex; gap: 4px; }
+.friend-action-btn {
+  font-size: 10px;
+  padding: 3px 8px;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--border);
+  background: var(--yellow);
+  color: var(--text);
+  cursor: pointer;
+  font-family: 'Karla', sans-serif;
+  transition: all 0.15s;
+}
+.friend-action-btn:hover { border-color: var(--pink); color: var(--text-dark); }
+
+/* Add friend form */
+.add-friend-form {
+  padding: 12px 16px;
+  border-top: 1.5px solid var(--border);
+  background: var(--yellow);
+  display: flex;
+  gap: 8px;
+}
+.add-friend-form input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--r-pill);
+  font-family: 'Karla', sans-serif;
+  font-size: 13px;
+  outline: none;
+  background: var(--white);
+  color: var(--text-dark);
+}
+.add-friend-form input:focus { border-color: var(--pink); }
+
+/* Circle feed */
+.circle-feed { display: flex; flex-direction: column; gap: 20px; }
+
+.feed-card {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+}
+.feed-card:hover { box-shadow: var(--shadow-sm); }
+
+.feed-card-hdr {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px 14px;
+}
+
+.feed-avatar {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  background: var(--pink);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 15px; font-weight: 600; color: #fff;
+  flex-shrink: 0;
+}
+
+.feed-user-info { flex: 1; }
+.feed-user-name { font-size: 14px; font-weight: 600; color: var(--text-dark); }
+.feed-time { font-size: 11px; color: var(--text-muted); }
+
+.feed-type-tag {
+  font-family: 'Courier New', monospace;
+  font-size: 8px; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 3px 10px; border-radius: var(--r-pill);
+  border: 1px solid var(--border);
+}
+.tag-ootd { background: var(--pink); color: #fff; border-color: var(--pink); }
+.tag-listing { background: var(--yellow); color: var(--text); }
+.tag-swap { background: var(--text-dark); color: #fff; border-color: var(--text-dark); }
+.tag-borrow { background: var(--yellow-deep); color: var(--text-dark); }
+
+/* OOTD post */
+.ootd-img-wrap {
+  width: 100%;
+  max-height: 420px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--yellow);
+}
+.ootd-img-wrap img { width: 100%; object-fit: cover; max-height: 420px; }
+
+.ootd-items-strip {
+  display: flex;
+  gap: 8px;
+  padding: 14px 20px;
+  overflow-x: auto;
+  border-top: 1px solid var(--border);
+}
+.ootd-strip-item {
+  flex-shrink: 0;
+  width: 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+}
+.ootd-strip-img {
+  width: 56px; height: 56px;
+  border-radius: var(--r-sm);
+  overflow: hidden;
+  border: 1.5px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  padding: 4px;
+}
+.ootd-strip-img img { width: auto; max-width: 100%; height: auto; max-height: 46px; object-fit: contain; }
+.ootd-strip-name { font-size: 9px; color: var(--text-muted); text-align: center; line-height: 1.2; }
+
+/* Caption and actions */
+.feed-caption { padding: 0 20px 12px; font-size: 14px; color: var(--text-dark); line-height: 1.5; }
+.feed-aesthetics { padding: 0 20px 14px; display: flex; flex-wrap: wrap; gap: 5px; }
+
+.feed-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border-top: 1px solid var(--border);
+}
+.feed-action {
+  display: flex; align-items: center; gap: 5px;
+  background: none; border: 1.5px solid var(--border);
+  border-radius: var(--r-pill);
+  padding: 6px 14px;
+  font-family: 'Karla', sans-serif; font-size: 12px;
+  color: var(--text); cursor: pointer; transition: all 0.18s;
+}
+.feed-action:hover { border-color: var(--pink); color: var(--text-dark); background: var(--pink-mist); }
+.feed-action.liked { background: var(--pink-mist); border-color: var(--pink); color: var(--pink-dark); }
+
+/* Swap completion card */
+.swap-card-body {
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.swap-item-thumb {
+  width: 80px; height: 80px;
+  border-radius: var(--r-md);
+  overflow: hidden;
+  border: 1.5px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  padding: 6px; flex-shrink: 0;
+}
+.swap-item-thumb img { width: auto; max-width: 100%; height: auto; max-height: 66px; object-fit: contain; }
+.swap-arrow { font-size: 24px; color: var(--pink); flex-shrink: 0; }
+.swap-info { flex: 1; }
+.swap-info p { font-size: 13px; color: var(--text); line-height: 1.6; }
+.swap-info strong { color: var(--text-dark); }
+
+/* Borrow request card */
+.borrow-card-body { padding: 16px 20px; }
+.borrow-item { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+.borrow-info p { font-size: 13px; color: var(--text); line-height: 1.6; }
+.borrow-info strong { color: var(--text-dark); }
+.borrow-actions { display: flex; gap: 8px; }
+.borrow-actions .btn { flex: 1; justify-content: center; font-size: 12px; padding: 10px; }
+
+/* Empty circle state */
+.circle-empty {
+  text-align: center;
+  padding: 80px 40px;
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: var(--r-lg);
+}
+.circle-empty-icon { font-size: 52px; display: block; margin-bottom: 16px; animation: pulse 2s ease-in-out infinite; }
+.circle-empty h3 { font-family: 'Cormorant Garamond', serif; font-size: 26px; color: var(--text-dark); margin-bottom: 8px; }
+.circle-empty p { font-size: 15px; color: var(--text-muted); margin-bottom: 20px; }
+
+/* Post OOTD banner */
+.post-ootd-banner {
+  background: var(--pink);
+  border-radius: var(--r-lg);
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.post-ootd-banner p { color: rgba(255,255,255,0.9); font-size: 14px; }
+.post-ootd-banner strong { color: #fff; display: block; font-family: 'Cormorant Garamond', serif; font-size: 18px; margin-bottom: 2px; }
+.post-ootd-btn {
+  background: #fff;
+  color: var(--pink-dark);
+  border: none;
+  padding: 10px 22px;
+  border-radius: var(--r-pill);
+  font-family: 'Karla', sans-serif;
+  font-size: 13px; font-weight: 700;
+  cursor: pointer; white-space: nowrap;
+  transition: all 0.2s; flex-shrink: 0;
+}
+.post-ootd-btn:hover { transform: scale(1.04); }
+
+@media(max-width:900px){
+  .circle-layout { grid-template-columns: 1fr; }
+  .circle-sidebar { position: static; }
+}

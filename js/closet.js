@@ -195,5 +195,6 @@ function render() {
 
 document.getElementById('navbar-mount').innerHTML = renderNavbar('closet.html');
 document.getElementById('footer-mount').innerHTML = renderFooter();
+if (!requireAuth()) throw new Error('not authed');
 document.body.insertAdjacentHTML('beforeend','<div id="modal-mount"></div>');
 render();

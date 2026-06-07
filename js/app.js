@@ -238,15 +238,66 @@ function connectGcal() {
   return demoEvents;
 }
 
+// ─── AUTH HELPERS ───
+function getSession()   { try { return JSON.parse(localStorage.getItem('sc-session') || 'null'); } catch { return null; } }
+function clearSession() { localStorage.removeItem('sc-session'); }
+
+function requireAuth() {
+  if (!getSession()) {
+    window.location.href = 'login.html';
+    return false;
+  }
+  return true;
+}
+
+function signOut() {
+  clearSession();
+  window.location.href = 'login.html';
+}
+
+function toggleUserMenu() {
+  const menu = document.getElementById('userMenu');
+  if (menu) menu.classList.toggle('hidden');
+}
+
+// Close menu when clicking outside
+document.addEventListener('click', (e) => {
+  const menu = document.getElementById('userMenu');
+  const avatar = document.getElementById('userAvatar');
+  if (menu && avatar && !avatar.contains(e.target) && !menu.contains(e.target)) {
+    menu.classList.add('hidden');
+  }
+});
+
 // ─── NAVBAR HTML ───
 function renderNavbar(activePage) {
+  const session = getSession();
   const pages = [
-    { href:'index.html',     label:'Today',     glyph:'✦' },
-    { href:'closet.html',    label:'My Closet', glyph:'✿' },
-    { href:'add.html',       label:'Add Item',  glyph:'+' },
-    { href:'calendar.html',  label:'Calendar',  glyph:'◈' },
-    { href:'analytics.html', label:'Analytics', glyph:'◉' },
+    { href:'index.html',      label:'Today',       glyph:'✦' },
+    { href:'closet.html',     label:'My Closet',   glyph:'✿' },
+    { href:'circle.html',     label:'My Circle',   glyph:'◎' },
+    { href:'marketplace.html',label:'Marketplace', glyph:'◈' },
+    { href:'edit.html',       label:'The Edit',    glyph:'✦' },
+    { href:'analytics.html',  label:'Analytics',   glyph:'◉' },
   ];
+
+  const userArea = session ? `
+    <div style="position:relative">
+      <button class="nav-avatar" id="userAvatar" onclick="toggleUserMenu()" title="${session.name}">
+        ${session.initials || '✦'}
+      </button>
+      <div class="nav-user-menu hidden" id="userMenu">
+        <div class="nav-user-info">
+          <span class="nav-user-name">${session.name}</span>
+          <span class="nav-user-email">${session.email}</span>
+        </div>
+        <a href="add.html" class="nav-menu-item">+ Add Item</a>
+        <a href="calendar.html" class="nav-menu-item">◈ Calendar</a>
+        <a href="analytics.html" class="nav-menu-item">◉ Style Report</a>
+        <button class="nav-menu-item signout" onclick="signOut()">✕ Sign Out</button>
+      </div>
+    </div>` : `<a href="login.html" class="btn btn-primary" style="font-size:12px;padding:8px 18px">Sign In</a>`;
+
   return `
   <nav class="navbar" id="navbar">
     <div class="nav-inner">
@@ -260,7 +311,10 @@ function renderNavbar(activePage) {
       <div class="nav-links" id="navLinks">
         ${pages.map(p=>`<a href="${p.href}" class="nav-link${p.href===activePage?' active':''}"><span class="glyph">${p.glyph}</span>${p.label}</a>`).join('')}
       </div>
-      <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+      <div style="display:flex;align-items:center;gap:10px">
+        ${userArea}
+        <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+      </div>
     </div>
   </nav>`;
 }

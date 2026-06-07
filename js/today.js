@@ -453,6 +453,7 @@ function renderMain(){
   </div>`;
 }
 
+if (!requireAuth()) throw new Error('not authed');
 document.getElementById('navbar-mount').innerHTML = renderNavbar('index.html');
 document.getElementById('footer-mount').innerHTML = renderFooter();
 generateOutfit();

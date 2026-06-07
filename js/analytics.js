@@ -130,4 +130,5 @@ function render(){
 
 document.getElementById('navbar-mount').innerHTML=renderNavbar('analytics.html');
 document.getElementById('footer-mount').innerHTML=renderFooter();
+if (!requireAuth()) throw new Error('not authed');
 render();

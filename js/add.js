@@ -167,4 +167,5 @@ function renderStep() {
 
 document.getElementById('navbar-mount').innerHTML=renderNavbar('add.html');
 document.getElementById('footer-mount').innerHTML=renderFooter();
+if (!requireAuth()) throw new Error('not authed');
 renderStep();
