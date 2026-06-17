@@ -57,36 +57,36 @@
 .login-brand {
   display: flex;
   align-items: center;
-  gap: 22px;
+  gap: 18px;
 }
 
-/* Spinning star icon — white, XXL */
+/* Spinning star icon — white */
 .login-star {
-  font-size: 60px;
+  font-size: 44px;
   color: #fff;
   animation: spin 10s linear infinite;
   display: inline-block;
-  filter: drop-shadow(0 4px 16px rgba(255,255,255,0.3));
+  filter: drop-shadow(0 4px 10px rgba(255,255,255,0.2));
   flex-shrink: 0;
   line-height: 1;
 }
 
 .login-brand-name {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 56px;
+  font-size: 40px;
   font-weight: 600;
   color: #fff;
-  letter-spacing: -0.025em;
-  line-height: 0.95;
+  letter-spacing: -0.02em;
+  line-height: 1;
 }
 
 .login-brand-sub {
   font-family: 'Courier New', monospace;
-  font-size: 14px;
+  font-size: 12px;
   letter-spacing: 0.24em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.9);
-  margin-top: 10px;
+  color: rgba(255,255,255,0.85);
+  margin-top: 6px;
 }
 
 .login-hero-text { display: flex; flex-direction: column; }
@@ -99,24 +99,6 @@
   line-height: 1.05;
   margin-bottom: 24px;
   letter-spacing: -0.02em;
-  display: flex;
-  align-items: baseline;
-  flex-wrap: wrap;
-  gap: 0;
-}
-
-/* Cycling word with smooth transition */
-.cycle-word {
-  display: inline-block;
-  min-width: 2.4em;
-  transition: opacity 0.35s ease, transform 0.35s ease;
-  opacity: 1;
-  transform: translateY(0);
-  font-weight: 700;
-}
-
-.word-static {
-  display: inline-block;
 }
 
 .login-headline strong {
@@ -126,14 +108,14 @@
 .login-headline em {
   font-style: italic;
   font-weight: 700;
-  color: #7a2548;
+  color: #fff;
 }
 
 .login-tagline {
   font-size: 16px;
   color: rgba(255,255,255,0.92);
   line-height: 1.65;
-  max-width: 440px;
+  max-width: 420px;
   text-shadow: 0 1px 2px rgba(0,0,0,0.05);
 }
 
@@ -142,126 +124,13 @@
   align-items: center;
   gap: 12px;
   font-family: 'Courier New', monospace;
-  font-size: 11px;
+  font-size: 10px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #7a2548;
-  font-weight: 700;
+  color: rgba(255,255,255,0.75);
 }
 
-.deco-dot { opacity: 0.6; }
-
-/* ── Floating clothing items ── */
-.float-item {
-  position: absolute;
-  z-index: 1;
-  width: 110px;
-  height: 110px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  pointer-events: none;
-  filter: drop-shadow(0 8px 24px rgba(122,37,72,0.18));
-}
-
-.float-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-.float-1 {
-  top: 10%;
-  right: 12%;
-  width: 130px;
-  height: 130px;
-  animation: float-drift-1 8s ease-in-out infinite;
-}
-
-.float-2 {
-  top: 30%;
-  right: 4%;
-  width: 95px;
-  height: 95px;
-  animation: float-drift-2 11s ease-in-out infinite;
-  animation-delay: -2s;
-}
-
-.float-3 {
-  bottom: 18%;
-  right: 18%;
-  width: 115px;
-  height: 115px;
-  animation: float-drift-3 9s ease-in-out infinite;
-  animation-delay: -1s;
-}
-
-.float-4 {
-  top: 55%;
-  right: 30%;
-  width: 85px;
-  height: 85px;
-  animation: float-drift-4 10s ease-in-out infinite;
-  animation-delay: -3s;
-}
-
-.float-5 {
-  bottom: 8%;
-  right: 6%;
-  width: 100px;
-  height: 100px;
-  animation: float-drift-5 12s ease-in-out infinite;
-  animation-delay: -4s;
-}
-
-@keyframes float-drift-1 {
-  0%, 100% { transform: translate(0, 0) rotate(-3deg); }
-  50% { transform: translate(-12px, -18px) rotate(3deg); }
-}
-
-@keyframes float-drift-2 {
-  0%, 100% { transform: translate(0, 0) rotate(5deg); }
-  50% { transform: translate(-20px, 12px) rotate(-5deg); }
-}
-
-@keyframes float-drift-3 {
-  0%, 100% { transform: translate(0, 0) rotate(-4deg); }
-  50% { transform: translate(15px, -14px) rotate(4deg); }
-}
-
-@keyframes float-drift-4 {
-  0%, 100% { transform: translate(0, 0) rotate(2deg); }
-  50% { transform: translate(-18px, -22px) rotate(-3deg); }
-}
-
-@keyframes float-drift-5 {
-  0%, 100% { transform: translate(0, 0) rotate(-2deg); }
-  50% { transform: translate(10px, -16px) rotate(4deg); }
-}
-
-/* ── Sparkles ── */
-.sparkle {
-  position: absolute;
-  color: #fff;
-  font-size: 18px;
-  z-index: 2;
-  pointer-events: none;
-  opacity: 0;
-  text-shadow: 0 0 8px rgba(255,255,255,0.6);
-}
-
-.sparkle-1 { top: 18%; left: 12%; animation: twinkle 3.5s ease-in-out infinite; animation-delay: 0s; }
-.sparkle-2 { top: 35%; left: 38%; animation: twinkle 2.8s ease-in-out infinite; animation-delay: -0.8s; font-size: 14px; }
-.sparkle-3 { top: 8%; left: 48%; animation: twinkle 4s ease-in-out infinite; animation-delay: -1.5s; font-size: 22px; }
-.sparkle-4 { top: 62%; left: 8%; animation: twinkle 3.2s ease-in-out infinite; animation-delay: -2.2s; font-size: 16px; }
-.sparkle-5 { top: 78%; left: 32%; animation: twinkle 3.6s ease-in-out infinite; animation-delay: -1s; font-size: 20px; }
-.sparkle-6 { top: 45%; left: 55%; animation: twinkle 2.5s ease-in-out infinite; animation-delay: -2.8s; font-size: 13px; }
-.sparkle-7 { top: 88%; left: 50%; animation: twinkle 4.2s ease-in-out infinite; animation-delay: -0.4s; font-size: 17px; }
-
-@keyframes twinkle {
-  0%, 100% { opacity: 0; transform: scale(0.3) rotate(0deg); }
-  50% { opacity: 1; transform: scale(1.2) rotate(180deg); }
-}
+.deco-dot { opacity: 0.5; }
 
 /* ── Right panel ── */
 .login-right {
