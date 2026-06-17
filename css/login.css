@@ -60,27 +60,22 @@
   gap: 18px;
 }
 
-/* Custom SVG dress icon — deep rose */
-.login-dress-icon {
-  width: 56px;
-  height: 56px;
-  animation: dress-sway 4s ease-in-out infinite;
+/* Spinning star icon — white */
+.login-star {
+  font-size: 44px;
+  color: #fff;
+  animation: spin 10s linear infinite;
   display: inline-block;
-  transform-origin: top center;
-  filter: drop-shadow(0 4px 10px rgba(122,37,72,0.15));
+  filter: drop-shadow(0 4px 10px rgba(255,255,255,0.2));
   flex-shrink: 0;
-}
-
-@keyframes dress-sway {
-  0%, 100% { transform: rotate(-4deg); }
-  50% { transform: rotate(4deg); }
+  line-height: 1;
 }
 
 .login-brand-name {
   font-family: 'Cormorant Garamond', serif;
   font-size: 40px;
   font-weight: 600;
-  color: #7a2548;
+  color: #fff;
   letter-spacing: -0.02em;
   line-height: 1;
 }
@@ -90,7 +85,7 @@
   font-size: 12px;
   letter-spacing: 0.24em;
   text-transform: uppercase;
-  color: rgba(122,37,72,0.75);
+  color: rgba(255,255,255,0.85);
   margin-top: 6px;
 }
 
@@ -98,24 +93,30 @@
 
 .login-headline {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(48px, 5.5vw, 76px);
-  font-weight: 300;
-  color: #7a2548;
-  line-height: 1;
+  font-size: clamp(44px, 5vw, 64px);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.05;
   margin-bottom: 24px;
   letter-spacing: -0.02em;
 }
 
+.login-headline strong {
+  font-weight: 700;
+}
+
 .login-headline em {
   font-style: italic;
-  color: #5e1c38;
+  font-weight: 700;
+  color: #fff;
 }
 
 .login-tagline {
   font-size: 16px;
-  color: rgba(122,37,72,0.88);
+  color: rgba(255,255,255,0.92);
   line-height: 1.65;
   max-width: 420px;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.05);
 }
 
 .login-deco {
@@ -126,7 +127,7 @@
   font-size: 10px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba(122,37,72,0.65);
+  color: rgba(255,255,255,0.75);
 }
 
 .deco-dot { opacity: 0.5; }
