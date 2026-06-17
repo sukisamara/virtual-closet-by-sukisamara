@@ -16,6 +16,16 @@
     <!-- Left panel — branding -->
     <div class="login-left">
       <div class="login-left-bg"></div>
+
+      <!-- Sparkles -->
+      <span class="sparkle sparkle-1">✦</span>
+      <span class="sparkle sparkle-2">✦</span>
+      <span class="sparkle sparkle-3">✦</span>
+      <span class="sparkle sparkle-4">✦</span>
+      <span class="sparkle sparkle-5">✦</span>
+      <span class="sparkle sparkle-6">✦</span>
+      <span class="sparkle sparkle-7">✦</span>
+
       <div class="login-left-inner">
         <div class="login-brand">
           <span class="login-star">✦</span>
@@ -26,7 +36,7 @@
         </div>
 
         <div class="login-hero-text">
-          <h1 class="login-headline"><strong>style, share, <em>swap.</em></strong></h1>
+          <h1 class="login-headline"><strong><span class="cycle-word" id="cycleWord">style</span>, share, <em>swap.</em></strong></h1>
           <p class="login-tagline">Your wardrobe, curated daily. Outfit suggestions powered by your calendar, the weather, and your aesthetic — share looks with your circle, swap pieces with friends, keep clothes in circulation.</p>
         </div>
 
@@ -151,5 +161,25 @@
 
   <script src="js/app.js"></script>
   <script src="js/login.js"></script>
+
+  <!-- Cycling word animation -->
+  <script>
+    (function() {
+      const words = ['style', 'share', 'swap'];
+      let i = 0;
+      const el = document.getElementById('cycleWord');
+      if (!el) return;
+      setInterval(() => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(-8px)';
+        setTimeout(() => {
+          i = (i + 1) % words.length;
+          el.textContent = words[i];
+          el.style.opacity = '1';
+          el.style.transform = 'translateY(0)';
+        }, 350);
+      }, 2200);
+    })();
+  </script>
 </body>
 </html>

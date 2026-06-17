@@ -436,3 +436,36 @@
   .login-headline { font-size: 56px; }
   .login-right { padding: 40px 24px; align-items: flex-start; padding-top: 40px; }
 }
+
+/* ── Cycling word ── */
+.cycle-word {
+  display: inline-block;
+  min-width: 2.4em;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Sparkles ── */
+.sparkle {
+  position: absolute;
+  color: #fff;
+  font-size: 18px;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0;
+  text-shadow: 0 0 8px rgba(255,255,255,0.6);
+}
+
+.sparkle-1 { top: 18%; left: 12%; animation: twinkle 3.5s ease-in-out infinite; animation-delay: 0s; }
+.sparkle-2 { top: 35%; left: 38%; animation: twinkle 2.8s ease-in-out infinite; animation-delay: -0.8s; font-size: 14px; }
+.sparkle-3 { top: 8%; left: 48%; animation: twinkle 4s ease-in-out infinite; animation-delay: -1.5s; font-size: 22px; }
+.sparkle-4 { top: 62%; left: 8%; animation: twinkle 3.2s ease-in-out infinite; animation-delay: -2.2s; font-size: 16px; }
+.sparkle-5 { top: 78%; left: 32%; animation: twinkle 3.6s ease-in-out infinite; animation-delay: -1s; font-size: 20px; }
+.sparkle-6 { top: 45%; left: 55%; animation: twinkle 2.5s ease-in-out infinite; animation-delay: -2.8s; font-size: 13px; }
+.sparkle-7 { top: 88%; left: 50%; animation: twinkle 4.2s ease-in-out infinite; animation-delay: -0.4s; font-size: 17px; }
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0; transform: scale(0.3) rotate(0deg); }
+  50% { opacity: 1; transform: scale(1.2) rotate(180deg); }
+}
