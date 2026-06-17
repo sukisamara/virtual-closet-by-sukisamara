@@ -17,34 +17,27 @@
     <div class="login-left">
       <div class="login-left-bg"></div>
 
-      <!-- Sparkles -->
-      <span class="sparkle sparkle-1">✦</span>
-      <span class="sparkle sparkle-2">✦</span>
-      <span class="sparkle sparkle-3">✦</span>
-      <span class="sparkle sparkle-4">✦</span>
-      <span class="sparkle sparkle-5">✦</span>
-      <span class="sparkle sparkle-6">✦</span>
-      <span class="sparkle sparkle-7">✦</span>
+      <!-- Top-left brand -->
+      <div class="login-brand">
+        <span class="login-star">✦</span>
+        <div class="login-brand-text">
+          <div class="login-brand-name">Virtual Closet</div>
+          <div class="login-brand-sub">by Suki Samara</div>
+        </div>
+      </div>
 
+      <!-- Centered cycling word -->
       <div class="login-left-inner">
-        <div class="login-brand">
-          <span class="login-star">✦</span>
-          <div>
-            <div class="login-brand-name">Virtual Closet</div>
-            <div class="login-brand-sub">by Suki Samara</div>
-          </div>
-        </div>
+        <h1 class="login-headline">
+          <span class="cycle-word" id="cycleWord">style.</span>
+        </h1>
+      </div>
 
-        <div class="login-hero-text">
-          <h1 class="login-headline"><strong><span class="cycle-word" id="cycleWord">style</span>, share, <em>swap.</em></strong></h1>
-          <p class="login-tagline">Your wardrobe, curated daily. Outfit suggestions powered by your calendar, the weather, and your aesthetic — share looks with your circle, swap pieces with friends, keep clothes in circulation.</p>
-        </div>
-
-        <div class="login-deco">
-          <span>EST. 2026</span>
-          <span class="deco-dot">·</span>
-          <span>hey@sukisamara.com</span>
-        </div>
+      <!-- Bottom footer -->
+      <div class="login-deco">
+        <span>EST. 2026</span>
+        <span class="deco-dot">·</span>
+        <span>hey@sukisamara.com</span>
       </div>
     </div>
 
@@ -165,13 +158,13 @@
   <!-- Cycling word animation -->
   <script>
     (function() {
-      const words = ['style', 'share', 'swap'];
+      const words = ['style.', 'share.', 'swap.'];
       let i = 0;
       const el = document.getElementById('cycleWord');
       if (!el) return;
       setInterval(() => {
         el.style.opacity = '0';
-        el.style.transform = 'translateY(-8px)';
+        el.style.transform = 'translateY(-10px)';
         setTimeout(() => {
           i = (i + 1) % words.length;
           el.textContent = words[i];
