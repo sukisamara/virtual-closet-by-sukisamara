@@ -18,104 +18,117 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 60px 48px;
+  padding: 60px 56px;
   position: relative;
   overflow: hidden;
 }
 
-/* decorative background circles */
-.login-left::before {
-  content: '';
+/* Background wardrobe image at 40% opacity */
+.login-left-bg {
   position: absolute;
-  width: 500px;
-  height: 500px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.07);
-  top: -100px;
-  right: -100px;
+  inset: 0;
+  background-image: url('../assets/login-bg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.40;
+  z-index: 0;
+  mix-blend-mode: multiply;
 }
+
+/* Soft pink overlay to keep brand colour dominant */
 .login-left::after {
   content: '';
   position: absolute;
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.06);
-  bottom: -80px;
-  left: -60px;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(244,162,195,0.35) 0%, rgba(244,162,195,0.55) 100%);
+  z-index: 1;
 }
 
 .login-left-inner {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   display: flex;
   flex-direction: column;
-  gap: 48px;
-  max-width: 400px;
+  gap: 56px;
+  max-width: 460px;
 }
 
 .login-brand {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 16px;
 }
 
-.login-star {
-  font-size: 32px;
-  color: rgba(255,255,255,0.9);
-  animation: spin 10s linear infinite;
+/* Animated dress icon */
+.login-dress-icon {
+  font-size: 44px;
+  animation: dress-sway 4s ease-in-out infinite;
+  display: inline-block;
+  transform-origin: top center;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.08));
+}
+
+@keyframes dress-sway {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
 }
 
 .login-brand-name {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 22px;
+  font-size: 32px;
   font-weight: 600;
   color: #fff;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.015em;
+  line-height: 1;
 }
 
 .login-brand-sub {
   font-family: 'Courier New', monospace;
-  font-size: 9px;
-  letter-spacing: 0.2em;
+  font-size: 11px;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.65);
-  margin-top: 2px;
+  color: rgba(255,255,255,0.85);
+  margin-top: 5px;
 }
+
+.login-hero-text { display: flex; flex-direction: column; }
 
 .login-headline {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(44px, 5vw, 68px);
+  font-size: clamp(48px, 5.5vw, 76px);
   font-weight: 300;
   color: #fff;
-  line-height: 1.05;
-  margin-bottom: 20px;
+  line-height: 1;
+  margin-bottom: 24px;
+  letter-spacing: -0.02em;
 }
 
 .login-headline em {
   font-style: italic;
-  color: rgba(255,255,255,0.85);
+  color: rgba(255,255,255,0.92);
 }
 
 .login-tagline {
-  font-size: 15px;
-  color: rgba(255,255,255,0.75);
+  font-size: 16px;
+  color: rgba(255,255,255,0.92);
   line-height: 1.65;
-  max-width: 340px;
+  max-width: 400px;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.05);
 }
 
 .login-deco {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   font-family: 'Courier New', monospace;
-  font-size: 9px;
-  letter-spacing: 0.18em;
+  font-size: 10px;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.4);
+  color: rgba(255,255,255,0.7);
 }
 
-.deco-dot { opacity: 0.4; }
+.deco-dot { opacity: 0.5; }
 
 /* ── Right panel ── */
 .login-right {
@@ -341,77 +354,6 @@
   box-shadow: var(--shadow-sm);
 }
 
-.nav-user-menu {
-  position: absolute;
-  top: calc(100% + 8px);
-  right: 0;
-  background: var(--white);
-  border: 1.5px solid var(--border);
-  border-radius: var(--r-lg);
-  padding: 8px;
-  min-width: 180px;
-  box-shadow: var(--shadow-md);
-  z-index: 300;
-  animation: fadeUp 0.2s ease;
-}
-
-.nav-user-info {
-  padding: 10px 12px 12px;
-  border-bottom: 1px solid var(--border);
-  margin-bottom: 6px;
-}
-
-.nav-user-name {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 16px;
-  color: var(--text-dark);
-  display: block;
-}
-
-.nav-user-email {
-  font-size: 11px;
-  color: var(--text-muted);
-}
-
-.nav-menu-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  width: 100%;
-  padding: 9px 12px;
-  border-radius: var(--r-md);
-  border: none;
-  background: transparent;
-  font-family: 'Karla', sans-serif;
-  font-size: 13px;
-  color: var(--text);
-  cursor: pointer;
-  text-align: left;
-  transition: all 0.15s;
-  text-decoration: none;
-}
-
-.nav-menu-item:hover {
-  background: var(--pink-mist);
-  color: var(--text-dark);
-}
-
-.nav-menu-item.signout {
-  color: #e07070;
-}
-
-.nav-menu-item.signout:hover {
-  background: #fff0f0;
-}
-
-/* ── Mobile ── */
-@media (max-width: 768px) {
-  .login-page { grid-template-columns: 1fr; }
-  .login-left { display: none; }
-  .login-right { padding: 40px 24px; align-items: flex-start; padding-top: 60px; }
-}
-
-/* ── Cleaner user menu ── */
 .nav-menu-divider {
   height: 1px;
   background: var(--border);
@@ -452,4 +394,43 @@
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 176px;
+}
+
+.nav-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 9px 12px;
+  border-radius: var(--r-md);
+  border: none;
+  background: transparent;
+  font-family: 'Karla', sans-serif;
+  font-size: 13px;
+  color: var(--text);
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.15s;
+  text-decoration: none;
+}
+
+.nav-menu-item:hover {
+  background: var(--pink-mist);
+  color: var(--text-dark);
+}
+
+.nav-menu-item.signout {
+  color: #e07070;
+}
+
+.nav-menu-item.signout:hover {
+  background: #fff0f0;
+}
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+  .login-page { grid-template-columns: 1fr; }
+  .login-left { min-height: 280px; padding: 40px 32px; }
+  .login-headline { font-size: 56px; }
+  .login-right { padding: 40px 24px; align-items: flex-start; padding-top: 40px; }
 }
