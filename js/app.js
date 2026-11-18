@@ -304,9 +304,15 @@ function renderNavbar(activePage) {
   <nav class="navbar" id="navbar">
     <div class="nav-inner">
       <a href="index.html" class="nav-logo">
-        <span class="nav-logo-star">✦</span>
+        <svg class="cami-icon" viewBox="0 0 44 50" aria-hidden="true">
+          <path d="M12.5 2.5 L10.5 16.5 M31.5 2.5 L33.5 16.5" stroke="#7b1e3a" stroke-width="2" stroke-linecap="round" fill="none"/>
+          <path d="M9 16 Q15.5 13.5 22 20 Q28.5 13.5 35 16 L39 44 Q22 49.5 5 44 Z" fill="#7b1e3a"/>
+          <path d="M9.6 18.6 Q15.5 16.4 22 22.6 Q28.5 16.4 34.4 18.6" stroke="#fff" stroke-opacity=".4" stroke-width="1" stroke-dasharray="1.6 1.6" fill="none"/>
+          <path d="M18.6 21.4 L22 23.6 L18.6 25.8 Z M25.4 21.4 L22 23.6 L25.4 25.8 Z" fill="#f4a2c3"/>
+          <circle cx="22" cy="23.6" r="1.2" fill="#f4a2c3"/>
+        </svg>
         <div class="nav-logo-text">
-          <span class="nav-logo-main">Virtual Closet</span>
+          <span class="nav-logo-main">CAMI</span>
           <span class="nav-logo-sub">by Suki Samara</span>
         </div>
       </a>

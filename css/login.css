@@ -56,15 +56,11 @@
   z-index: 3;
 }
 
-/* Spinning star icon — white */
-.login-star {
-  font-size: 32px;
-  color: #fff;
-  animation: spin 10s linear infinite;
-  display: inline-block;
-  flex-shrink: 0;
-  line-height: 1;
-  filter: drop-shadow(0 2px 8px rgba(255,255,255,0.25));
+/* Burgundy cami icon (animation lives in style.css) */
+.login-brand .cami-icon {
+  width: 44px;
+  height: 50px;
+  filter: drop-shadow(0 3px 6px rgba(123,30,58,0.25));
 }
 
 /* Aligned brand text */
@@ -76,23 +72,24 @@
 }
 
 .login-brand-name {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 26px;
-  font-weight: 600;
+  font-family: 'Bagel Fat One', sans-serif;
+  font-size: 40px;
+  font-weight: 400;
   color: #fff;
-  letter-spacing: -0.015em;
+  letter-spacing: 0.03em;
+  text-shadow: 0 3px 10px rgba(123,30,58,0.18);
   line-height: 1;
   margin: 0;
   padding: 0;
 }
 
 .login-brand-sub {
-  font-family: 'Courier New', monospace;
-  font-size: 10px;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.85);
-  margin: 6px 0 0 0;
+  font-family: 'Fredoka', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #fff;
+  margin: 4px 0 0 2px;
   padding: 0;
   line-height: 1;
 }
@@ -461,8 +458,9 @@
   .login-page { grid-template-columns: 1fr; }
   .login-left { min-height: 320px; }
   .login-brand { top: 24px; left: 24px; }
-  .login-brand-name { font-size: 20px; }
-  .login-brand-sub { font-size: 9px; }
+  .login-brand-name { font-size: 30px; }
+  .login-brand-sub { font-size: 12px; }
+  .login-brand .cami-icon { width: 34px; height: 39px; }
   .login-headline { font-size: 72px; }
   .login-deco { bottom: 20px; font-size: 9px; }
   .login-right { padding: 40px 24px; align-items: flex-start; padding-top: 40px; }
