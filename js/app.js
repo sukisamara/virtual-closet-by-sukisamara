@@ -312,8 +312,8 @@ function renderNavbar(activePage) {
           <circle cx="22" cy="23.6" r="1.2" fill="#f4a2c3"/>
         </svg>
         <div class="nav-logo-text">
-          <span class="nav-logo-main">CAMI</span>
-          <span class="nav-logo-sub">by Suki Samara</span>
+          <span class="nav-logo-main">cami</span>
+          <span class="nav-logo-sub">by suki samara</span>
         </div>
       </a>
       <div class="nav-links" id="navLinks">
