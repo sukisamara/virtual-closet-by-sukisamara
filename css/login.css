@@ -84,12 +84,12 @@
 }
 
 .login-brand-sub {
-  font-family: 'Fredoka', sans-serif;
-  font-size: 14px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
   font-weight: 600;
-  letter-spacing: 0.04em;
+  letter-spacing: -0.015em;
   color: #fff;
-  margin: 4px 0 0 2px;
+  margin: 2px 0 0 2px;
   padding: 0;
   line-height: 1;
 }
@@ -459,7 +459,7 @@
   .login-left { min-height: 320px; }
   .login-brand { top: 24px; left: 24px; }
   .login-brand-name { font-size: 30px; }
-  .login-brand-sub { font-size: 12px; }
+  .login-brand-sub { font-size: 17px; }
   .login-brand .cami-icon { width: 34px; height: 39px; }
   .login-headline { font-size: 72px; }
   .login-deco { bottom: 20px; font-size: 9px; }

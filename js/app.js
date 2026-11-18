@@ -305,18 +305,15 @@ function renderNavbar(activePage) {
     <div class="nav-inner">
       <a href="index.html" class="nav-logo">
         <svg class="cami-icon" viewBox="0 0 44 50" aria-hidden="true">
-          <path d="M10.5 2.5 L10.5 15 M33.5 2.5 L33.5 15" stroke="#7b1e3a" stroke-width="2" stroke-linecap="round" fill="none"/>
-          <path d="M8 14 L13 14 C15 31 29 31 31 14 L36 14 L36 47 L8 47 Z" fill="#7b1e3a" stroke="#7b1e3a" stroke-width="1" stroke-linejoin="round"/>
-          <g stroke="#f4a2c3" stroke-width="0.85" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M22 33 C20 31 18.3 31.4 18.3 33 C18.3 34.6 20 35 22 33 Z"/>
-            <path d="M22 33 C24 31 25.7 31.4 25.7 33 C25.7 34.6 24 35 22 33 Z"/>
-            <path d="M21.6 33.5 L20.7 36.4 M22.4 33.5 L23.3 36.4"/>
-          </g>
-          <circle cx="22" cy="33" r="0.75" fill="#f4a2c3"/>
+          <path d="M12.5 2.5 L10.5 16.5 M31.5 2.5 L33.5 16.5" stroke="#7b1e3a" stroke-width="2" stroke-linecap="round" fill="none"/>
+          <path d="M9 16 Q15.5 13.5 22 20 Q28.5 13.5 35 16 L39 44 Q22 49.5 5 44 Z" fill="#7b1e3a"/>
+          <path d="M9.6 18.6 Q15.5 16.4 22 22.6 Q28.5 16.4 34.4 18.6" stroke="#fff" stroke-opacity=".4" stroke-width="1" stroke-dasharray="1.6 1.6" fill="none"/>
+          <path d="M18.6 21.4 L22 23.6 L18.6 25.8 Z M25.4 21.4 L22 23.6 L25.4 25.8 Z" fill="#f4a2c3"/>
+          <circle cx="22" cy="23.6" r="1.2" fill="#f4a2c3"/>
         </svg>
         <div class="nav-logo-text">
-          <span class="nav-logo-main">cami</span>
-          <span class="nav-logo-sub">by suki samara</span>
+          <span class="nav-logo-main">CAMI</span>
+          <span class="nav-logo-sub">by Suki Samara</span>
         </div>
       </a>
       <div class="nav-links" id="navLinks">

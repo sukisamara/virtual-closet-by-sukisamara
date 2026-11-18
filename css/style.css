@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Karla:wght@300;400;500;600;700&family=Bagel+Fat+One&family=Fredoka:wght@500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Karla:wght@300;400;500;600;700&family=Bagel+Fat+One&display=swap');
 
 :root {
   --yellow:      #fbf7c6;
@@ -41,7 +41,7 @@ h1,h2,h3,h4 { font-family:'Cormorant Garamond',serif; color:var(--text-dark); li
 .nav-logo .cami-icon { width:32px; height:36px; }
 .nav-logo-text { display:flex; flex-direction:column; gap:1px; }
 .nav-logo-main { font-family:'Bagel Fat One',sans-serif; font-size:26px; font-weight:400; color:var(--text-dark); letter-spacing:0.03em; line-height:1; }
-.nav-logo-sub { font-family:'Fredoka',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.04em; color:var(--pink); line-height:1; }
+.nav-logo-sub { font-family:'Cormorant Garamond',serif; font-size:16px; font-weight:600; letter-spacing:-0.01em; color:var(--pink-dark); line-height:1; }
 .nav-links { display:flex; align-items:center; gap:1px; }
 .nav-link { display:flex; align-items:center; gap:5px; padding:7px 12px; border-radius:var(--r-pill); text-decoration:none; color:var(--text); font-size:12.5px; font-weight:500; border:1.5px solid transparent; transition:all .2s; white-space:nowrap; }
 .nav-link:hover { color:var(--text-dark); background:var(--pink-mist); border-color:var(--border); }
@@ -114,17 +114,16 @@ h1,h2,h3,h4 { font-family:'Cormorant Garamond',serif; color:var(--text-dark); li
 /* ─── ANIMATIONS ─── */
 @keyframes spin { to { transform:rotate(360deg); } }
 
-/* ─── CAMI LOGO ICON — shakes left and right ─── */
-.cami-icon { display:inline-block; flex-shrink:0; transform-origin:50% 50%; animation:cami-shake 1.6s ease-in-out infinite; }
+/* ─── CAMI LOGO ICON — swings left and right from its straps ─── */
+.cami-icon { display:inline-block; flex-shrink:0; transform-origin:50% 4%; animation:cami-shake 2.4s ease-in-out infinite; }
 @keyframes cami-shake {
-  0%, 55%, 100% { transform:translateX(0) rotate(0deg); }
-  7%  { transform:translateX(-3px) rotate(-6deg); }
-  14% { transform:translateX(3px) rotate(6deg); }
-  21% { transform:translateX(-3px) rotate(-5deg); }
-  28% { transform:translateX(3px) rotate(5deg); }
-  35% { transform:translateX(-2px) rotate(-3deg); }
-  42% { transform:translateX(2px) rotate(3deg); }
-  49% { transform:translateX(-1px) rotate(-1deg); }
+  0%, 62%, 100% { transform:rotate(0deg); }
+  8%  { transform:rotate(-12deg); }
+  18% { transform:rotate(10deg); }
+  28% { transform:rotate(-8deg); }
+  38% { transform:rotate(6deg); }
+  48% { transform:rotate(-3deg); }
+  56% { transform:rotate(1.5deg); }
 }
 @media (prefers-reduced-motion: reduce) { .cami-icon { animation:none; } }
 @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.5} }
