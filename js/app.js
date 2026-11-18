@@ -305,8 +305,8 @@ function renderNavbar(activePage) {
     <div class="nav-inner">
       <a href="index.html" class="nav-logo">
         <svg class="cami-icon" viewBox="0 0 44 50" aria-hidden="true">
-          <path d="M12 2.5 L12 16 M32 2.5 L32 16" stroke="#7b1e3a" stroke-width="2" stroke-linecap="round" fill="none"/>
-          <path d="M9 14 C11.5 33 32.5 33 35 14 L35 47 L9 47 Z" fill="#7b1e3a" stroke="#7b1e3a" stroke-width="1" stroke-linejoin="round"/>
+          <path d="M10.5 2.5 L10.5 15 M33.5 2.5 L33.5 15" stroke="#7b1e3a" stroke-width="2" stroke-linecap="round" fill="none"/>
+          <path d="M8 14 L13 14 C15 31 29 31 31 14 L36 14 L36 47 L8 47 Z" fill="#7b1e3a" stroke="#7b1e3a" stroke-width="1" stroke-linejoin="round"/>
           <g stroke="#f4a2c3" stroke-width="0.85" fill="none" stroke-linecap="round" stroke-linejoin="round">
             <path d="M22 33 C20 31 18.3 31.4 18.3 33 C18.3 34.6 20 35 22 33 Z"/>
             <path d="M22 33 C24 31 25.7 31.4 25.7 33 C25.7 34.6 24 35 22 33 Z"/>
