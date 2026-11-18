@@ -114,16 +114,17 @@ h1,h2,h3,h4 { font-family:'Cormorant Garamond',serif; color:var(--text-dark); li
 /* ─── ANIMATIONS ─── */
 @keyframes spin { to { transform:rotate(360deg); } }
 
-/* ─── CAMI LOGO ICON — swings left and right from its straps ─── */
-.cami-icon { display:inline-block; flex-shrink:0; transform-origin:50% 4%; animation:cami-shake 2.4s ease-in-out infinite; }
+/* ─── CAMI LOGO ICON — shakes left and right ─── */
+.cami-icon { display:inline-block; flex-shrink:0; transform-origin:50% 50%; animation:cami-shake 1.6s ease-in-out infinite; }
 @keyframes cami-shake {
-  0%, 62%, 100% { transform:rotate(0deg); }
-  8%  { transform:rotate(-12deg); }
-  18% { transform:rotate(10deg); }
-  28% { transform:rotate(-8deg); }
-  38% { transform:rotate(6deg); }
-  48% { transform:rotate(-3deg); }
-  56% { transform:rotate(1.5deg); }
+  0%, 55%, 100% { transform:translateX(0) rotate(0deg); }
+  7%  { transform:translateX(-3px) rotate(-6deg); }
+  14% { transform:translateX(3px) rotate(6deg); }
+  21% { transform:translateX(-3px) rotate(-5deg); }
+  28% { transform:translateX(3px) rotate(5deg); }
+  35% { transform:translateX(-2px) rotate(-3deg); }
+  42% { transform:translateX(2px) rotate(3deg); }
+  49% { transform:translateX(-1px) rotate(-1deg); }
 }
 @media (prefers-reduced-motion: reduce) { .cami-icon { animation:none; } }
 @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.5} }
